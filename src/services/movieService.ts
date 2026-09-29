@@ -19,6 +19,15 @@ export const movieService = {
 
   // TODO: Implement getNowPlayingMovies function
   // Endpoint: GET /movie/now_playing
+  getNowPlayingMovies: async (page: number): Promise<MovieResponse> => {
+    const response = await api.get<MovieResponse>('/movie/now_playing', {
+      params: {
+        page,
+      },
+    });
+
+    return response.data;
+  },
 
   // TODO: Implement getMovieDetails function
   // Endpoint: GET /movie/{movie_id}
