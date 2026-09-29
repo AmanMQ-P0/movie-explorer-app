@@ -33,7 +33,7 @@ export default function HomePage() {
 
       <main>
         <section>
-          <h1>Trending Now</h1>
+          <h2>Trending Now</h2>
 
           <div>
             {popularMovies.data.results.map((movie) => (
@@ -43,7 +43,7 @@ export default function HomePage() {
         </section>
 
         <section>
-          <h1>New Release</h1>
+          <h2>New Release</h2>
 
           <div>
             {nowPlayingMovies.data.results.map((movie) => (
