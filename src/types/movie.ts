@@ -10,6 +10,10 @@ export interface Movie {
 export interface MovieResponse {
   // TODO: Add pagination properties
   // Examples: page, results, total_pages, total_results
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
 }
 
 // TODO: Add more types as needed (Genre, Video, etc.)
