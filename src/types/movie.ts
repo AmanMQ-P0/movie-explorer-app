@@ -22,4 +22,17 @@ export interface MovieResponse {
   total_results: number;
 }
 
+export interface MovieVideo {
+  key: string;
+  name: string;
+  site: string;
+  type: string;
+  official: boolean;
+}
+
+export interface MovieVideosResponse {
+  id: number;
+  results: MovieVideo[];
+}
+
 // TODO: Add more types as needed (Genre, Video, etc.)
