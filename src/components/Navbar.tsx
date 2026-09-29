@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import { Tv } from 'lucide-react';
+import { Tv, Search } from 'lucide-react';
 
 export default function Navbar() {
   return (
@@ -16,6 +16,7 @@ export default function Navbar() {
         </div>
 
         <Link to='/search' aria-label='Search movies'>
+          <Search aria-hidden='true' />
           Search Movie
         </Link>
       </nav>
