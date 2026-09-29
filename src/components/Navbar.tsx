@@ -1,10 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
+import { Tv } from 'lucide-react';
 
 export default function Navbar() {
   return (
     <header>
       <nav>
         <Link to='/' aria-label='Movie Explorer home'>
+          <Tv aria-hidden='true' />
           Movie
         </Link>
 
