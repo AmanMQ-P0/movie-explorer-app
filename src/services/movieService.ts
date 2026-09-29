@@ -1,5 +1,5 @@
 import api from '@/lib/axios';
-import { type Movie, type MovieResponse } from '@/types/movie';
+import { type MovieResponse } from '@/types/movie';
 
 // TODO: Create service functions to fetch data from TMDB API
 // Reference: https://developer.themoviedb.org/reference/intro/getting-started
