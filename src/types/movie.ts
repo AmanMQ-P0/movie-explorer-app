@@ -5,6 +5,12 @@
 export interface Movie {
   // TODO: Add movie properties based on TMDB API response
   // Examples: id, title, overview, poster_path, etc.
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string | null;
+  backdrop_path: string | null;
+  vote_average: number;
 }
 
 export interface MovieResponse {
