@@ -2,6 +2,7 @@ import MovieCard from '@/components/MovieCard';
 import { useNowPlayingMovies, usePopularMovies } from '@/hooks/useMovies';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
+import Footer from '@/components/Footer';
 
 export default function HomePage() {
   const popularMovies = usePopularMovies(1);
@@ -52,6 +53,8 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </>
   );
 }
