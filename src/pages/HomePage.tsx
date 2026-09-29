@@ -1,3 +1,4 @@
+import MovieCard from '@/components/MovieCard';
 import { useNowPlayingMovies, usePopularMovies } from '@/hooks/useMovies';
 
 export default function HomePage() {
@@ -21,23 +22,21 @@ export default function HomePage() {
       <section>
         <h1>Trending Now</h1>
 
-        {popularMovies.data.results.map((movie) => (
-          <article key={movie.id}>
-            <h2>{movie.title}</h2>
-            <p>{movie.vote_average}</p>
-          </article>
-        ))}
+        <div>
+          {popularMovies.data.results.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
       </section>
 
       <section>
         <h1>New Release</h1>
 
-        {nowPlayingMovies.data.results.map((movie) => (
-          <article key={movie.id}>
-            <h2>{movie.title}</h2>
-            <p>{movie.vote_average}</p>
-          </article>
-        ))}
+        <div>
+          {nowPlayingMovies.data.results.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
       </section>
     </main>
   );
