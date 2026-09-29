@@ -1,6 +1,7 @@
 import MovieCard from '@/components/MovieCard';
 import { useNowPlayingMovies, usePopularMovies } from '@/hooks/useMovies';
 import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
 
 export default function HomePage() {
   const popularMovies = usePopularMovies(1);
@@ -18,10 +19,18 @@ export default function HomePage() {
     return null;
   }
 
+  const featuredMovie = popularMovies.data.results[0];
+
+  if (!featuredMovie) {
+    return null;
+  }
+
   return (
     <>
       <Navbar />
-      
+
+      <HeroSection movie={featuredMovie} />
+
       <main>
         <section>
           <h1>Trending Now</h1>
