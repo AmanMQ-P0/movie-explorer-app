@@ -14,5 +14,12 @@ export const usePopularMovies = (page: number) => {
   });
 };
 
+export const useNowPlayingMovies = (page: number) => {
+  return useQuery({
+    queryKey: ['movies', 'nowPlaying', page],
+    queryFn: () => movieService.getNowPlayingMovies(page),
+  });
+};
+
 // TODO: Add more hooks for different endpoints
 // Examples: useMovieDetails, useSearchMovies, useNowPlayingMovies
