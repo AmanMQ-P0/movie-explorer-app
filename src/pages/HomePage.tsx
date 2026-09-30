@@ -1,4 +1,3 @@
-import MovieCard from '@/components/MovieCard';
 import { useNowPlayingMovies, usePopularMovies } from '@/hooks/useMovies';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
