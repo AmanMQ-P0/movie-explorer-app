@@ -4,7 +4,7 @@ import iconTv from '@/assets/icons/tv-icon.svg';
 
 export default function Navbar() {
   return (
-    <header className='border-2 border-amber-400 max-w-360 mx-auto h-16 flex items-center px-xl fixed inset-x-none top-none z-100 lg:h-22.5 lg:px-11xl'>
+    <header className='border-2 border-amber-400 max-w-360 mx-auto h-16 flex items-center px-xl fixed inset-x-none top-none z-100 lg:h-22.5 xl:px-11xl'>
       <nav className='border-2 border-blue-600 flex justify-between items-center w-full'>
         <div className='flex items-center gap-8xl'>
           <Link
