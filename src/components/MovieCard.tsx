@@ -16,9 +16,11 @@ export default function MovieCard({ movie }: MovieCardProps) {
       />
 
       <div className='flex flex-col justify-center gap-md'>
-        <h3>{movie.title}</h3>
+        <h3 className='text-md font-semibold lg:text-lg'>{movie.title}</h3>
 
-        <p>{movie.vote_average.toFixed(1)}/10</p>
+        <p className='text-sm font-normal text-neutral-400 lg:text-md'>
+          {movie.vote_average.toFixed(1)}/10
+        </p>
       </div>
     </article>
   );
