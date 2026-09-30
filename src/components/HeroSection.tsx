@@ -28,28 +28,49 @@ export default function HeroSection({ movie }: HeroProps) {
   }
 
   return (
-    <section>
-      <img
-        src={getImageUrl(movie.backdrop_path, IMAGE_SIZES.backdrop.large)}
-        alt={movie.title}
-      />
+    <section className='border-2 border-amber-400 max-w-360 mx-auto lg:relative'>
+      <div className='relative'>
+        <img
+          src={getImageUrl(movie.backdrop_path, IMAGE_SIZES.backdrop.large)}
+          alt={movie.title}
+          className='w-full object-cover object-center'
+        />
 
-      <div>
-        <h1>{movie.title}</h1>
+        <div className='absolute inset-none bg-linear-to-t from-base-black via-base-black/45 to-transparent' />
+      </div>
 
-        <p>{movie.overview}</p>
+      <div className='px-xl xl:px-11xl lg:absolute lg:bottom-none xl:bottom-auto xl:top-75'>
+        <div className='border-2 border-blue-600 flex flex-col gap-3xl lg:max-w-158.75 lg:gap-6xl'>
+          <div className='flex flex-col gap-sm'>
+            <h1 className='text-display-xs font-bold lg:text-display-2xl'>
+              {movie.title}
+            </h1>
 
-        {trailer && (
-          <a
-            href={`https://www.youtube.com/watch?v=${trailer.key}`}
-            target='_blank'
-            rel='noreferrer'
-          >
-            Watch Trailer
-          </a>
-        )}
+            <p className='text-sm font-normal text-neutral-400 lg:text-md'>
+              {movie.overview}
+            </p>
+          </div>
 
-        <Link to={`/movie/${movie.id}`}>See Detail</Link>
+          <div className='flex flex-col gap-xl lg:flex-row'>
+            {trailer && (
+              <a
+                href={`https://www.youtube.com/watch?v=${trailer.key}`}
+                target='_blank'
+                rel='noreferrer'
+                className='bg-primary-300 text-sm font-semibold rounded-full flex p-md justify-center items-center lg:w-57.5'
+              >
+                <span>Watch Trailer</span>
+              </a>
+            )}
+
+            <Link
+              to={`/movie/${movie.id}`}
+              className='border border-neutral-900 text-sm font-semibold rounded-full flex p-md justify-center items-center bg-base-black/40 lg:w-57.5'
+            >
+              <span>See Detail</span>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
