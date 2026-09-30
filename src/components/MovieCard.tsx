@@ -1,6 +1,7 @@
 import { IMAGE_SIZES } from '@/lib/constants';
 import { getImageUrl } from '@/lib/utils';
 import type { Movie } from '@/types/movie';
+import starIcon from '@/assets/icons/star-icon.svg';
 
 interface MovieCardProps {
   movie: Movie;
@@ -18,9 +19,13 @@ export default function MovieCard({ movie }: MovieCardProps) {
       <div className='flex flex-col justify-center gap-md'>
         <h3 className='text-md font-semibold lg:text-lg'>{movie.title}</h3>
 
-        <p className='text-sm font-normal text-neutral-400 lg:text-md'>
-          {movie.vote_average.toFixed(1)}/10
-        </p>
+        <div className='flex items-center gap-xs'>
+          <img src={starIcon} alt='' />
+
+          <p className='text-sm font-normal text-neutral-400 lg:text-md'>
+            {movie.vote_average.toFixed(1)}/10
+          </p>
+        </div>
       </div>
     </article>
   );
