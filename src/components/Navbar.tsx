@@ -4,31 +4,49 @@ import iconTv from '@/assets/icons/tv-icon.svg';
 
 export default function Navbar() {
   return (
-    <header className='border-2 border-amber-400 max-w-360 my-none mx-auto h-[64px] flex justify-center items-center px-xl'>
-      <nav className='border-2 border-blue-600 flex justify-between w-full'>
-        <Link
-          to='/'
-          aria-label='Movie Explorer home'
-          className='flex justify-center gap-xs'
-        >
-          <img src={iconTv} alt='' />
-          Movie
-        </Link>
+    <header className='border-2 border-amber-400 max-w-360 mx-auto h-16 flex items-center px-xl fixed inset-x-none top-none lg:h-22.5 lg:px-11xl'>
+      <nav className='border-2 border-blue-600 flex justify-between items-center w-full'>
+        <div className='flex items-center gap-8xl'>
+          <Link
+            to='/'
+            aria-label='Movie Explorer home'
+            className='flex items-center gap-xs lg:gap-md'
+          >
+            <img src={iconTv} alt='' />
+            <span className='text-xl font-semibold tracking-[-0.04em]'>
+              Movie
+            </span>
+          </Link>
 
-        <div className='hidden'>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='/favorites'>Favorites</NavLink>
+          <div className='hidden lg:flex items-center gap-6xl'>
+            <NavLink to='/' className='text-md font-normal text-base-white'>
+              Home
+            </NavLink>
+            <NavLink
+              to='/favorites'
+              className='text-md font-normal text-base-white'
+            >
+              Favorites
+            </NavLink>
+          </div>
         </div>
 
-        <Link
-          to='/search'
-          aria-label='Search movies'
-          className='flex justify-center gap-3xl'
-        >
-          <Search aria-hidden='true' />
-          <span className='hidden'>Search Movie</span>
-          <AlignJustify />
-        </Link>
+        <div className='flex items-center gap-3xl'>
+          <Link
+            to='/search'
+            aria-label='Search movies'
+            className='flex justify-center items-center lg:py-md lg:px-xl lg:border lg:border-neutral-800 lg:rounded-2xl lg:gap-md lg:w-60 lg:justify-start'
+          >
+            <Search aria-hidden='true' className='lg:text-neutral-500' />
+            <span className='hidden lg:block text-md font-normal text-neutral-500'>
+              Search Movie
+            </span>
+          </Link>
+
+          <button type='button' aria-label='Open menu' className='lg:hidden'>
+            <AlignJustify aria-hidden='true' />
+          </button>
+        </div>
       </nav>
     </header>
   );
