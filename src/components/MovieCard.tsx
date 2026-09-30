@@ -14,7 +14,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
         alt={movie.title}
       />
 
-      <h2>{movie.title}</h2>
+      <h3>{movie.title}</h3>
 
       <p>{movie.vote_average.toFixed(1)}</p>
     </article>
