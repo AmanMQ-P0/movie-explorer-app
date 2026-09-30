@@ -9,7 +9,7 @@ interface MovieCardProps {
 
 export default function MovieCard({ movie }: MovieCardProps) {
   return (
-    <article className='flex flex-col justify-center gap-md w-42.5 h-90 shrink-0 lg:w-55 lg:h-120'>
+    <article className='flex flex-col gap-md w-42.5 h-90 shrink-0 lg:w-55 lg:h-120'>
       <img
         src={getImageUrl(movie.poster_path, IMAGE_SIZES.poster.medium)}
         alt={movie.title}
