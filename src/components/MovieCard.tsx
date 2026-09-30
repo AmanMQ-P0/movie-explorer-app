@@ -16,7 +16,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
         className='w-full rounded-xl'
       />
 
-      <div className='flex flex-col justify-center gap-md'>
+      <div className='flex flex-col gap-md'>
         <h3 className='text-md font-semibold lg:text-lg'>{movie.title}</h3>
 
         <div className='flex items-center gap-xs'>
