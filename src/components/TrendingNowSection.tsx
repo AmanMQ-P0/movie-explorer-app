@@ -9,7 +9,7 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto px-xl py-5xl xl:pt-none xl:pb-8xl xl:pl-11xl xl:pr-none'>
       <div className='border-2 border-blue-600 overflow-hidden flex flex-col gap-3xl xl:gap-5xl'>
-        <h2 className='text-display-xs font-bold'>Trending Now</h2>
+        <h2 className='text-display-xs font-bold lg:text-display-lg'>Trending Now</h2>
 
         <div className='flex gap-xl lg:gap-2xl'>
           {movies.map((movie) => (
