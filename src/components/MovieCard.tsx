@@ -13,7 +13,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
       <img
         src={getImageUrl(movie.poster_path, IMAGE_SIZES.poster.medium)}
         alt={movie.title}
-        className='w-full h-full rounded-xl'
+        className='w-full rounded-xl'
       />
 
       <div className='flex flex-col justify-center gap-md'>
