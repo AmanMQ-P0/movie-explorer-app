@@ -3,6 +3,7 @@ import { useNowPlayingMovies, usePopularMovies } from '@/hooks/useMovies';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import Footer from '@/components/Footer';
+import TrendingNowSection from '@/components/TrendingNowSection';
 
 export default function HomePage() {
   const popularMovies = usePopularMovies(1);
@@ -43,15 +44,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section>
-          <h2>New Release</h2>
-
-          <div>
-            {nowPlayingMovies.data.results.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-          </div>
-        </section>
+        <TrendingNowSection movies={popularMovies.data.results} />
       </main>
 
       <Footer />
