@@ -123,3 +123,8 @@
   --spacing-10xl: 8rem;
   --spacing-11xl: 8.75rem;
 }
+
+body {
+  background-color: var(--color-base-black);
+  color: var(--color-neutral-25);
+}
