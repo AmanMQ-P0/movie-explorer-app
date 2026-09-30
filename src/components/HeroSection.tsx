@@ -3,6 +3,7 @@ import { getImageUrl } from '@/lib/utils';
 import { useMovieVideos } from '@/hooks/useMovies';
 import type { Movie } from '@/types/movie';
 import { Link } from 'react-router-dom';
+import playIcon from '@/assets/icons/play-icon.svg';
 
 interface HeroProps {
   movie: Movie;
@@ -57,9 +58,10 @@ export default function HeroSection({ movie }: HeroProps) {
                 href={`https://www.youtube.com/watch?v=${trailer.key}`}
                 target='_blank'
                 rel='noreferrer'
-                className='bg-primary-300 text-sm font-semibold rounded-full flex p-md justify-center items-center lg:w-57.5'
+                className='bg-primary-300 text-sm font-semibold rounded-full flex p-md justify-center items-center gap-md lg:w-57.5'
               >
                 <span>Watch Trailer</span>
+                <img src={playIcon} alt='' />
               </a>
             )}
 
