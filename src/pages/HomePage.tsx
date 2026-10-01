@@ -55,6 +55,7 @@ export default function HomePage() {
           pageCount={nowPlayingData.pages.length}
           hasNextPage={hasNextPage}
           isFetchingNextPage={isFetchingNextPage}
+          isFetchNextPageError={isFetchNextPageError}
           onLoadMore={fetchNextPage}
         />
       </main>
