@@ -8,7 +8,7 @@ interface NewReleaseProps {
   hasNextPage: boolean;
   isFetchingNextPage: boolean;
   isFetchNextPageError: boolean;
-  onLoadMore: () => void;
+  onLoadMore: () => Promise<unknown>;
 }
 
 export default function NewReleaseSection({
