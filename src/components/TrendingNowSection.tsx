@@ -16,7 +16,7 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
 
         <div className='flex gap-xl relative lg:gap-2xl'>
           {movies.map((movie) => (
-            <div key={movie.id} className='w-33 shrink-0 lg:w-55'>
+            <div key={movie.id} className='w-33 sm:w-40 md:50 shrink-0 lg:w-55'>
               <MovieCard movie={movie} />
             </div>
           ))}
