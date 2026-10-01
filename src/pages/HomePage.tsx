@@ -7,7 +7,12 @@ import NewReleaseSection from '@/components/NewReleaseSection';
 
 export default function HomePage() {
   const popularMovies = usePopularMovies(1);
-  const nowPlayingMovies = useNowPlayingMovies();
+  const {
+    data: nowPlayingData,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useNowPlayingMovies();
 
   if (popularMovies.isLoading || nowPlayingMovies.isLoading) {
     return <div>Loading...</div>;
