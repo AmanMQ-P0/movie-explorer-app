@@ -4,6 +4,10 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface NewReleaseProps {
   movies: Movie[];
+  pageCount: number;
+  hasNextPage: boolean;
+  isFetchingNextPage: boolean;
+  onLoadMore: () => void;
 }
 
 export default function NewReleaseSection({ movies }: NewReleaseProps) {
