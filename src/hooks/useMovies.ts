@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
 import { movieService } from '@/services/movieService';
 import { QUERY_KEYS } from '@/lib/constants';
 
@@ -15,10 +15,18 @@ export const usePopularMovies = (page: number) => {
   });
 };
 
-export const useNowPlayingMovies = (page: number) => {
-  return useQuery({
-    queryKey: QUERY_KEYS.movies.nowPlaying(page),
-    queryFn: () => movieService.getNowPlayingMovies(page),
+export const useNowPlayingMovies = () => {
+  return useInfiniteQuery({
+    queryKey: QUERY_KEYS.movies.nowPlaying,
+    queryFn: ({ pageParam }) => movieService.getNowPlayingMovies(pageParam),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.page >= lastPage.total_pages) {
+        return undefined;
+      }
+
+      return lastPage.page + 1;
+    },
   });
 };
 
