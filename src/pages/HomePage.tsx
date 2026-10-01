@@ -7,7 +7,7 @@ import NewReleaseSection from '@/components/NewReleaseSection';
 
 export default function HomePage() {
   const popularMovies = usePopularMovies(1);
-  const nowPlayingMovies = useNowPlayingMovies(1);
+  const nowPlayingMovies = useNowPlayingMovies();
 
   if (popularMovies.isLoading || nowPlayingMovies.isLoading) {
     return <div>Loading...</div>;
@@ -27,6 +27,9 @@ export default function HomePage() {
     return null;
   }
 
+  const newReleaseMovies =
+    nowPlayingMovies.data.pages.flatMap((page) => page.results) ?? [];
+
   return (
     <>
       <Navbar />
@@ -36,7 +39,7 @@ export default function HomePage() {
       <main>
         <TrendingNowSection movies={popularMovies.data.results} />
 
-        <NewReleaseSection movies={nowPlayingMovies.data.results} />
+        <NewReleaseSection movies={newReleaseMovies} />
       </main>
 
       <Footer />
