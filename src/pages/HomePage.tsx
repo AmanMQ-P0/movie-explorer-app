@@ -14,6 +14,7 @@ export default function HomePage() {
     isFetchingNextPage,
     isLoading: isNowPlayingLoading,
     isError: isNowPlayingError,
+    isFetchNextPageError,
   } = useNowPlayingMovies();
 
   if (popularMovies.isLoading || isNowPlayingLoading) {
