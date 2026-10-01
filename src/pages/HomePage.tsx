@@ -14,15 +14,15 @@ export default function HomePage() {
     isFetchingNextPage,
   } = useNowPlayingMovies();
 
-  if (popularMovies.isLoading || nowPlayingMovies.isLoading) {
+  if (popularMovies.isLoading || !nowPlayingData) {
     return <div>Loading...</div>;
   }
 
-  if (popularMovies.isError || nowPlayingMovies.isError) {
+  if (popularMovies.isError) {
     return <div>Failed to load movies.</div>;
   }
 
-  if (!popularMovies.data || !nowPlayingMovies.data) {
+  if (!popularMovies.data || !nowPlayingData) {
     return null;
   }
 
