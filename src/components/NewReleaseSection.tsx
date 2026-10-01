@@ -36,6 +36,16 @@ export default function NewReleaseSection({
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
+
+        {hasNextPage && (
+          <button
+            type='button'
+            onClick={onLoadMore}
+            disabled={isFetchingNextPage}
+          >
+            {isFetchingNextPage ? 'Loading...' : 'Load More'}
+          </button>
+        )}
       </div>
     </section>
   );
