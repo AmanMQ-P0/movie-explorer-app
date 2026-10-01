@@ -33,7 +33,7 @@ export default function NewReleaseSection({
           New Release
         </h2>
 
-        <div className='grid grid-cols-2 gap-x-xl gap-y-4xl items-center sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
+        <div className='grid grid-cols-2 gap-x-xl gap-y-4xl sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
           {movies.slice(0, visibleMovieCount).map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
