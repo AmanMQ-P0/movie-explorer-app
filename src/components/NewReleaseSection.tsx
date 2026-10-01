@@ -10,7 +10,13 @@ interface NewReleaseProps {
   onLoadMore: () => void;
 }
 
-export default function NewReleaseSection({ movies }: NewReleaseProps) {
+export default function NewReleaseSection({
+  movies,
+  pageCount,
+  hasNextPage,
+  isFetchingNextPage,
+  onLoadMore,
+}: NewReleaseProps) {
   const isSm = useMediaQuery('(min-width: 640px)');
   const isMd = useMediaQuery('(min-width: 768px)');
   const isXl = useMediaQuery('(min-width: 1280px)');
