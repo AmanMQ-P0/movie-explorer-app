@@ -12,13 +12,18 @@ export default function HomePage() {
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
+    isLoading: isNowPlayingLoading,
+    isError: isNowPlayingError,
   } = useNowPlayingMovies();
 
-  if (popularMovies.isLoading || !nowPlayingData) {
+  if (popularMovies.isLoading || isNowPlayingLoading) {
     return <div>Loading...</div>;
   }
 
-  if (popularMovies.isError) {
+  if (
+    (popularMovies.isError && !popularMovies.data) ||
+    (isNowPlayingError && !nowPlayingData)
+  ) {
     return <div>Failed to load movies.</div>;
   }
 
