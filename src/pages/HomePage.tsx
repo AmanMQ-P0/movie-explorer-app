@@ -44,7 +44,13 @@ export default function HomePage() {
       <main>
         <TrendingNowSection movies={popularMovies.data.results} />
 
-        <NewReleaseSection movies={newReleaseMovies} />
+        <NewReleaseSection
+          movies={newReleaseMovies}
+          pageCount={nowPlayingData.pages.length}
+          hasNextPage={hasNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+          onLoadMore={fetchNextPage}
+        />
       </main>
 
       <Footer />
