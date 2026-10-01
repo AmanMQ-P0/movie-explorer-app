@@ -33,7 +33,7 @@ export default function HomePage() {
   }
 
   const newReleaseMovies =
-    nowPlayingMovies.data.pages.flatMap((page) => page.results) ?? [];
+    nowPlayingData.pages.flatMap((page) => page.results) ?? [];
 
   return (
     <>
