@@ -22,6 +22,7 @@ export default function NewReleaseSection({
   const isXl = useMediaQuery('(min-width: 1280px)');
 
   const moviesPerLoad = isXl ? 15 : isMd ? 16 : isSm ? 12 : 8;
+  const visibleMovieCount = moviesPerLoad * pageCount;
 
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto pt-none px-xl pb-5xl xl:px-11xl xl:py-none'>
@@ -31,7 +32,7 @@ export default function NewReleaseSection({
         </h2>
 
         <div className='grid grid-cols-2 gap-x-xl gap-y-4xl items-center sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
-          {movies.slice(0, moviesPerLoad).map((movie) => (
+          {movies.slice(0, visibleMovieCount).map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
