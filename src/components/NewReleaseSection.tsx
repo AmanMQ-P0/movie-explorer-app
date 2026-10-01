@@ -50,6 +50,7 @@ export default function NewReleaseSection({
             type='button'
             onClick={onLoadMore}
             disabled={isFetchingNextPage}
+            className='absolute left-1/2 bottom-25 -translate-x-1/2 bg-base-black/60 border border-neutral-900 w-50 h-11 p-md rounded-full text-sm font-semibold flex justify-center items-center xl:w-58 xl:h-13 xl:text-md'
           >
             {isFetchingNextPage ? 'Loading...' : 'Load More'}
           </button>
