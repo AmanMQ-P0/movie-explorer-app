@@ -28,7 +28,7 @@ export default function NewReleaseSection({
 
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto pt-none px-xl pb-5xl xl:px-11xl xl:py-none'>
-      <div className='border-2 border-blue-600 flex flex-col gap-3xl xl:gap-5xl'>
+      <div className='border-2 border-blue-600 relative flex flex-col gap-3xl xl:gap-5xl'>
         <h2 className='text-display-xs font-bold lg:text-display-lg'>
           New Release
         </h2>
@@ -38,6 +38,8 @@ export default function NewReleaseSection({
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
+
+        <div className='pointer-events-none absolute inset-x-0 bottom-0 h-60 bg-linear-to-t from-base-black via-base-black/90 to-transparent' />
 
         {isFetchNextPageError && (
           <p role='alert'>Failed to load more movies. Please try again.</p>
