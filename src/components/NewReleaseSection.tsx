@@ -7,6 +7,7 @@ interface NewReleaseProps {
   pageCount: number;
   hasNextPage: boolean;
   isFetchingNextPage: boolean;
+  isFetchNextPageError: boolean;
   onLoadMore: () => void;
 }
 
@@ -15,6 +16,7 @@ export default function NewReleaseSection({
   pageCount,
   hasNextPage,
   isFetchingNextPage,
+  isFetchNextPageError,
   onLoadMore,
 }: NewReleaseProps) {
   const isSm = useMediaQuery('(min-width: 640px)');
@@ -36,6 +38,10 @@ export default function NewReleaseSection({
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
+
+        {isFetchNextPageError && (
+          <p role='alert'>Failed to load more movies. Please try again.</p>
+        )}
 
         {hasNextPage && (
           <button
