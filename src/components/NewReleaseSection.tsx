@@ -7,13 +7,17 @@ interface NewReleaseProps {
 
 export default function NewReleaseSection({ movies }: NewReleaseProps) {
   return (
-    <section>
-      <h2>New Release</h2>
+    <section className='border-2 border-amber-400 max-w-360 mx-auto pt-none px-xl pb-5xl xl:px-11xl xl:py-none'>
+      <div className='border-2 border-blue-600 flex flex-col gap-3xl xl:gap-5xl'>
+        <h2 className='text-display-xs font-bold lg:text-display-lg'>
+          New Release
+        </h2>
 
-      <div>
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        <div className='grid grid-cols-2 gap-x-xl items-center sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
       </div>
     </section>
   );
