@@ -31,15 +31,20 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
           Trending Now
         </h2>
 
-        <div className='flex gap-xl relative lg:gap-2xl'>
-          {movies.map((movie) => (
-            <div
-              key={movie.id}
-              className='w-33 sm:w-40 md:w-50 shrink-0 lg:w-55'
-            >
-              <MovieCard movie={movie} />
-            </div>
-          ))}
+        <div className='relative'>
+          <div
+            ref={sliderRef}
+            className='flex gap-xl overflow-x-auto scrollbar-none lg:gap-2xl'
+          >
+            {movies.map((movie) => (
+              <div
+                key={movie.id}
+                className='w-33 sm:w-40 md:w-50 shrink-0 lg:w-55'
+              >
+                <MovieCard movie={movie} />
+              </div>
+            ))}
+          </div>
 
           <div className='h-full w-10 sm:w-40 md:w-80 absolute right-none bg-linear-to-l from-base-black via-base-black/70 to-base-black/0' />
         </div>
