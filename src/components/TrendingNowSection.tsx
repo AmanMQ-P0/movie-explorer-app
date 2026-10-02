@@ -46,7 +46,7 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
             ))}
           </div>
 
-          <div className='h-full w-10 sm:w-40 md:w-80 absolute right-none bg-linear-to-l from-base-black via-base-black/70 to-base-black/0' />
+          <div className='w-10 sm:w-40 md:w-80 absolute right-none bg-linear-to-l from-base-black via-base-black/70 to-base-black/0 inset-y-none pointer-events-none' />
         </div>
 
         <button
