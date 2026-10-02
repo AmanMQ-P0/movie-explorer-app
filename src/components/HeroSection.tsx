@@ -35,14 +35,6 @@ export default function HeroSection({ movies }: HeroProps) {
   const trailer =
     youtubeTrailers.find((video) => video.official) ?? youtubeTrailers[0];
 
-  if (videos.isLoading) {
-    return <section>Loading trailer...</section>;
-  }
-
-  if (videos.isError) {
-    return <section>Failed to load trailer.</section>;
-  }
-
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto lg:relative'>
       <div className='relative'>
