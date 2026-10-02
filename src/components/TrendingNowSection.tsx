@@ -51,6 +51,8 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
 
         <button
           type='button'
+          aria-label='Scroll trending movies to the right'
+          onClick={handleNext}
           className='absolute -right-xxs top-55 p-1.75 bg-base-black/60 w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 lg:right-5xl'
         >
           <ChevronRight aria-hidden='true' />
