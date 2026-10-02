@@ -8,7 +8,10 @@ interface TrendingNowProps {
 
 export default function TrendingNowSection({ movies }: TrendingNowProps) {
   return (
-    <section className='border-2 border-amber-400 max-w-360 mx-auto px-xl pt-5xl relative lg:pb-8xl xl:pt-none xl:pl-11xl xl:pr-none'>
+    <section
+      id='trending-now'
+      className='border-2 border-amber-400 max-w-360 mx-auto px-xl pt-5xl relative lg:pb-8xl xl:pt-none xl:pl-11xl xl:pr-none'
+    >
       <div className='border-2 border-blue-600 overflow-hidden flex flex-col gap-3xl xl:gap-5xl'>
         <h2 className='text-display-xs font-bold lg:text-display-lg'>
           Trending Now
@@ -16,7 +19,10 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
 
         <div className='flex gap-xl relative lg:gap-2xl'>
           {movies.map((movie) => (
-            <div key={movie.id} className='w-33 sm:w-40 md:w-50 shrink-0 lg:w-55'>
+            <div
+              key={movie.id}
+              className='w-33 sm:w-40 md:w-50 shrink-0 lg:w-55'
+            >
               <MovieCard movie={movie} />
             </div>
           ))}
