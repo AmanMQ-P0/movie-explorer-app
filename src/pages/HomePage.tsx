@@ -32,8 +32,20 @@ export default function HomePage() {
     return null;
   }
 
-  const newReleaseMovies =
-    nowPlayingData.pages.flatMap((page) => page.results) ?? [];
+  const newReleaseMovies = [
+    ...new Map(
+      nowPlayingData.pages
+        .flatMap((page) => page.results)
+        .map((movie) => [movie.id, movie])
+    ).values(),
+  ];
+
+  // kode tersebut kalau dipisah:
+  // const allMovies = nowPlayingData.pages.flatMap((page) => page.results);
+
+  // const movieMap = new Map(allMovies.map((movie) => [movie.id, movie]));
+
+  // const newReleaseMovies = [...movieMap.values()];
 
   return (
     <>
