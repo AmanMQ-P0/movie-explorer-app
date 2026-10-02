@@ -4,12 +4,27 @@ import { useMovieVideos } from '@/hooks/useMovies';
 import type { Movie } from '@/types/movie';
 import { Link } from 'react-router-dom';
 import playIcon from '@/assets/icons/play-icon.svg';
+import { useState, useEffect } from 'react';
 
 interface HeroProps {
-  movie: Movie;
+  movies: Movie[];
 }
 
-export default function HeroSection({ movie }: HeroProps) {
+export default function HeroSection({ movies }: HeroProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const movie = movies[activeIndex];
+
+  useEffect(() => {
+    if (movies.length <= 1) return;
+
+    const intervalId = setInterval(() => {
+      setActiveIndex((currentIndex) => (currentIndex + 1) % movies.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [movies.length]);
+
   const videos = useMovieVideos(movie.id);
 
   const youtubeTrailers =
