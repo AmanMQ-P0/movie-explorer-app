@@ -75,13 +75,13 @@ export default function HeroSection({ movies }: HeroProps) {
               </p>
             </div>
 
-            <div className='flex flex-col gap-xl lg:flex-row'>
+            <div className='flex flex-col gap-xl sm:flex-row sm:justify-center sm:items-center md:justify-start'>
               {trailer && (
                 <a
                   href={`https://www.youtube.com/watch?v=${trailer.key}`}
                   target='_blank'
                   rel='noreferrer'
-                  className='bg-primary-300 text-sm font-semibold rounded-full flex p-md justify-center items-center gap-md lg:w-57.5'
+                  className='bg-primary-300 text-sm font-semibold rounded-full flex p-md justify-center items-center gap-md sm:w-57.5'
                 >
                   <span>Watch Trailer</span>
                   <img src={playIcon} alt='' />
@@ -90,7 +90,7 @@ export default function HeroSection({ movies }: HeroProps) {
 
               <Link
                 to={`/movie/${movie.id}`}
-                className='border border-neutral-900 text-sm font-semibold rounded-full flex p-md justify-center items-center bg-base-black/40 lg:w-57.5'
+                className='border border-neutral-900 text-sm font-semibold rounded-full flex p-md justify-center items-center bg-base-black/40 sm:w-57.5'
               >
                 <span>See Detail</span>
               </Link>
