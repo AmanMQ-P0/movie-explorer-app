@@ -5,6 +5,7 @@ import type { Movie } from '@/types/movie';
 import { Link } from 'react-router-dom';
 import playIcon from '@/assets/icons/play-icon.svg';
 import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface HeroProps {
   movies: Movie[];
@@ -37,12 +38,19 @@ export default function HeroSection({ movies }: HeroProps) {
 
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto lg:relative'>
-      <div className='relative'>
-        <img
-          src={getImageUrl(movie.backdrop_path, IMAGE_SIZES.backdrop.large)}
-          alt={movie.title}
-          className='w-full object-cover object-center'
-        />
+      <div className='relative aspect-video overflow-hidden'>
+        <AnimatePresence initial={false}>
+          <motion.img
+            key={movie.id}
+            src={getImageUrl(movie.backdrop_path, IMAGE_SIZES.backdrop.large)}
+            alt={movie.title}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            className='absolute inset-0 w-full h-full object-cover object-center'
+          />
+        </AnimatePresence>
 
         <div className='absolute inset-none bg-linear-to-t from-base-black via-base-black/45 to-transparent' />
       </div>
