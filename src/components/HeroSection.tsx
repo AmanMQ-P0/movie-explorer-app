@@ -62,7 +62,7 @@ export default function HeroSection({ movies }: HeroProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: 'easeInOut' }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
             className='border-2 border-blue-600 flex flex-col gap-3xl md:w-2/3 lg:gap-6xl'
           >
             <div className='flex flex-col gap-sm'>
