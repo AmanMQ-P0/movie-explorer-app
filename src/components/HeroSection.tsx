@@ -55,7 +55,7 @@ export default function HeroSection({ movies }: HeroProps) {
         <div className='absolute inset-none bg-linear-to-t from-base-black via-base-black/45 to-transparent' />
       </div>
 
-      <div className='px-xl xl:px-11xl lg:absolute lg:bottom-none xl:bottom-auto xl:top-75'>
+      <div className='px-xl xl:px-11xl min-h-75 lg:absolute lg:bottom-none xl:bottom-auto xl:top-75'>
         <AnimatePresence mode='wait'>
           <motion.div
             key={movie.id}
@@ -66,11 +66,11 @@ export default function HeroSection({ movies }: HeroProps) {
             className='border-2 border-blue-600 flex flex-col gap-3xl lg:max-w-158.75 lg:gap-6xl'
           >
             <div className='flex flex-col gap-sm'>
-              <h1 className='text-display-xs font-bold lg:text-display-2xl'>
+              <h1 className='text-display-xs font-bold line-clamp-1 lg:text-display-2xl'>
                 {movie.title}
               </h1>
 
-              <p className='text-sm font-normal text-neutral-400 lg:text-md'>
+              <p className='text-sm font-normal text-neutral-400 line-clamp-4 lg:text-md'>
                 {movie.overview}
               </p>
             </div>
