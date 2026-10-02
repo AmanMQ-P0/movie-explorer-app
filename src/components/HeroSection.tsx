@@ -37,7 +37,7 @@ export default function HeroSection({ movies }: HeroProps) {
     youtubeTrailers.find((video) => video.official) ?? youtubeTrailers[0];
 
   return (
-    <section className='border-2 border-amber-400 max-w-360 mx-auto lg:relative'>
+    <section className='border-2 border-amber-400 max-w-360 mx-auto md:relative'>
       <div className='relative aspect-video overflow-hidden'>
         <AnimatePresence initial={false}>
           <motion.img
@@ -55,7 +55,7 @@ export default function HeroSection({ movies }: HeroProps) {
         <div className='absolute inset-none bg-linear-to-t from-base-black via-base-black/45 to-transparent' />
       </div>
 
-      <div className='px-xl xl:px-11xl min-h-75 lg:absolute lg:bottom-none xl:bottom-auto xl:top-75'>
+      <div className='px-xl xl:px-11xl min-h-75 md:absolute md:top-1/3 md:min-h-73 lg:bottom-none xl:bottom-auto xl:top-75'>
         <AnimatePresence mode='wait'>
           <motion.div
             key={movie.id}
@@ -63,7 +63,7 @@ export default function HeroSection({ movies }: HeroProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: 'easeInOut' }}
-            className='border-2 border-blue-600 flex flex-col gap-3xl lg:max-w-158.75 lg:gap-6xl'
+            className='border-2 border-blue-600 flex flex-col gap-3xl md:w-2/3 lg:max-w-158.75 lg:gap-6xl'
           >
             <div className='flex flex-col gap-sm'>
               <h1 className='text-display-xs font-bold line-clamp-1 lg:text-display-2xl'>
