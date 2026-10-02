@@ -32,12 +32,6 @@ export default function HomePage() {
     return null;
   }
 
-  const featuredMovie = popularMovies.data.results[0];
-
-  if (!featuredMovie) {
-    return null;
-  }
-
   const newReleaseMovies =
     nowPlayingData.pages.flatMap((page) => page.results) ?? [];
 
@@ -45,7 +39,7 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      <HeroSection movie={featuredMovie} />
+      <HeroSection movies={popularMovies.data.results} />
 
       <main>
         <TrendingNowSection movies={popularMovies.data.results} />
