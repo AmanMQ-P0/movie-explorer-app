@@ -1,10 +1,37 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Search, AlignJustify } from 'lucide-react';
 import iconTv from '@/assets/icons/tv-icon.svg';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const trendingNowSection = document.getElementById('trending-now');
+
+      if (!trendingNowSection) return;
+
+      const trendingNowSectionTop =
+        trendingNowSection.getBoundingClientRect().top;
+
+      setIsScrolled(trendingNowSectionTop <= 64);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className='border-2 border-amber-400 max-w-360 mx-auto h-16 flex items-center px-xl fixed inset-x-none top-none z-100 lg:h-22.5 xl:px-11xl'>
+    <header
+      className={`border-2 border-amber-400 max-w-360 mx-auto h-16 flex items-center px-xl fixed inset-x-none top-none z-100 lg:h-22.5 xl:px-11xl ${
+        isScrolled ? 'bg-base-black/60 backdrop-blur-md' : 'bg-transparent'
+      }`}
+    >
       <nav className='border-2 border-blue-600 flex justify-between items-center w-full'>
         <div className='flex items-center gap-8xl'>
           <Link
