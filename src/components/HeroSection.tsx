@@ -63,14 +63,14 @@ export default function HeroSection({ movies }: HeroProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: 'easeInOut' }}
-            className='border-2 border-blue-600 flex flex-col gap-3xl md:w-2/3 lg:max-w-158.75 lg:gap-6xl'
+            className='border-2 border-blue-600 flex flex-col gap-3xl md:w-2/3 lg:gap-6xl'
           >
             <div className='flex flex-col gap-sm'>
-              <h1 className='text-display-xs font-bold line-clamp-1 lg:text-display-2xl'>
+              <h1 className='text-display-xs font-bold line-clamp-1 lg:line-clamp-2 lg:text-display-2xl'>
                 {movie.title}
               </h1>
 
-              <p className='text-sm font-normal text-neutral-400 line-clamp-4 lg:text-md'>
+              <p className='text-sm font-normal text-neutral-400 line-clamp-4 lg:line-clamp-5 lg:text-md'>
                 {movie.overview}
               </p>
             </div>
