@@ -30,7 +30,7 @@ export default function Navbar() {
     <header
       className={`border-2 border-amber-400 max-w-360 mx-auto h-16 flex items-center px-xl fixed inset-x-none top-none z-100 lg:h-22.5 xl:px-11xl ${
         isScrolled ? 'bg-base-black/60 backdrop-blur-md' : 'bg-transparent'
-      }`}
+      } transition-[background-color,backdrop-filter] duration-300 ease-in-out`}
     >
       <nav className='border-2 border-blue-600 flex justify-between items-center w-full'>
         <div className='flex items-center gap-8xl'>
