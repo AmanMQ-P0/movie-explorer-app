@@ -1,4 +1,3 @@
-import { Tv } from 'lucide-react';
 import iconTv from '@/assets/icons/tv-icon.svg';
 
 export default function Footer() {
