@@ -12,8 +12,8 @@ export default function Navbar() {
             aria-label='Movie Explorer home'
             className='flex items-center gap-xs lg:gap-md'
           >
-            <img src={iconTv} alt='' />
-            <span className='text-xl font-semibold tracking-[-0.04em]'>
+            <img src={iconTv} alt='' className='md:w-10 md:h-10' />
+            <span className='text-xl font-semibold tracking-[-0.04em] lg:text-display-sm'>
               Movie
             </span>
           </Link>
