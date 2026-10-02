@@ -1,12 +1,26 @@
 import MovieCard from '@/components/MovieCard';
 import type { Movie } from '@/types/movie';
 import { ChevronRight } from 'lucide-react';
+import { useRef } from 'react';
 
 interface TrendingNowProps {
   movies: Movie[];
 }
 
 export default function TrendingNowSection({ movies }: TrendingNowProps) {
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const handleNext = () => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    slider.scrollBy({
+      left: slider.clientWidth * 0.8,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <section
       id='trending-now'
