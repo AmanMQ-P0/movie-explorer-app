@@ -1,6 +1,6 @@
 import MovieCard from '@/components/MovieCard';
 import type { Movie } from '@/types/movie';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useRef } from 'react';
 
 interface TrendingNowProps {
@@ -17,6 +17,17 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
 
     slider.scrollBy({
       left: slider.clientWidth * 0.8,
+      behavior: 'smooth',
+    });
+  };
+
+  const handlePrev = () => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    slider.scrollBy({
+      left: -(slider.clientWidth * 0.8),
       behavior: 'smooth',
     });
   };
@@ -56,6 +67,15 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
           className='absolute -right-xxs top-55 p-1.75 bg-base-black/60 w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 lg:right-5xl'
         >
           <ChevronRight aria-hidden='true' />
+        </button>
+
+        <button
+          type='button'
+          aria-label='Scroll trending movies to the left'
+          onClick={handlePrev}
+          className='absolute -left-xxs top-55 p-1.75 bg-base-black/60 w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 xl:left-40'
+        >
+          <ChevronLeft aria-hidden='true' />
         </button>
       </div>
     </section>
