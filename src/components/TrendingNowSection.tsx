@@ -10,24 +10,13 @@ interface TrendingNowProps {
 export default function TrendingNowSection({ movies }: TrendingNowProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const handleNext = () => {
+  const handleScroll = (direction: 'left' | 'right') => {
     const slider = sliderRef.current;
 
     if (!slider) return;
 
     slider.scrollBy({
-      left: slider.clientWidth * 0.8,
-      behavior: 'smooth',
-    });
-  };
-
-  const handlePrev = () => {
-    const slider = sliderRef.current;
-
-    if (!slider) return;
-
-    slider.scrollBy({
-      left: -(slider.clientWidth * 0.8),
+      left: slider.clientWidth * 0.8 * (direction === 'right' ? 1 : -1),
       behavior: 'smooth',
     });
   };
@@ -63,7 +52,7 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
         <button
           type='button'
           aria-label='Scroll trending movies to the right'
-          onClick={handleNext}
+          onClick={() => handleScroll('right')}
           className='absolute -right-xxs top-55 p-1.75 bg-base-black/60 w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 lg:right-5xl'
         >
           <ChevronRight aria-hidden='true' />
@@ -72,7 +61,7 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
         <button
           type='button'
           aria-label='Scroll trending movies to the left'
-          onClick={handlePrev}
+          onClick={() => handleScroll('left')}
           className='absolute -left-xxs top-55 p-1.75 bg-base-black/60 w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 xl:left-40'
         >
           <ChevronLeft aria-hidden='true' />
