@@ -2,13 +2,19 @@ import { Tv } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer>
-      <div>
-        <Tv aria-hidden='true' />
-        <span>Movie</span>
-      </div>
+    <footer className='max-w-360 mx-auto py-3xl px-xl border-t border-neutral-800 md:mt-10 xl:px-11xl md:py-md'>
+      <div className='h-30 flex flex-col gap-md md:flex-row md:justify-between md:items-center'>
+        <div className='flex items-center gap-xs lg:gap-md'>
+          <Tv aria-hidden='true' />
+          <span className='text-xl font-semibold tracking-[-0.04em] lg:text-display-sm'>
+            Movie
+          </span>
+        </div>
 
-      <p>Copyright ©2025 Movie Explorer</p>
+        <p className='text-xs font-normal text-neutral-600 md:text-md'>
+          Copyright ©2025 Movie Explorer
+        </p>
+      </div>
     </footer>
   );
 }
