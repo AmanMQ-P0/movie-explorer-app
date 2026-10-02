@@ -1,7 +1,7 @@
 import MovieCard from '@/components/MovieCard';
 import type { Movie } from '@/types/movie';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface TrendingNowProps {
   movies: Movie[];
@@ -9,6 +9,9 @@ interface TrendingNowProps {
 
 export default function TrendingNowSection({ movies }: TrendingNowProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   const handleScroll = (direction: 'left' | 'right') => {
     const slider = sliderRef.current;
@@ -20,6 +23,29 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
       behavior: 'smooth',
     });
   };
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    const updateScrollState = () => {
+      const { scrollLeft, clientWidth, scrollWidth } = slider;
+
+      setCanScrollLeft(scrollLeft > 1);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1);
+    };
+
+    updateScrollState();
+
+    slider.addEventListener('scroll', updateScrollState);
+    window.addEventListener('resize', updateScrollState);
+
+    return () => {
+      slider.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateScrollState);
+    };
+  }, [movies.length]);
 
   return (
     <section
@@ -53,7 +79,8 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
           type='button'
           aria-label='Scroll trending movies to the right'
           onClick={() => handleScroll('right')}
-          className='absolute -right-xxs top-55 p-1.75 bg-base-black/60 w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 lg:right-5xl'
+          disabled={!canScrollRight}
+          className={`absolute -right-xxs top-55 p-1.75 ${canScrollRight ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 lg:right-5xl`}
         >
           <ChevronRight aria-hidden='true' />
         </button>
@@ -62,7 +89,8 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
           type='button'
           aria-label='Scroll trending movies to the left'
           onClick={() => handleScroll('left')}
-          className='absolute -left-xxs top-55 p-1.75 bg-base-black/60 w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 xl:left-40'
+          disabled={!canScrollLeft}
+          className={`absolute -left-xxs top-55 p-1.75 ${canScrollLeft ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 xl:left-40`}
         >
           <ChevronLeft aria-hidden='true' />
         </button>
