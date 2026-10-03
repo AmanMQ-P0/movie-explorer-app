@@ -1,11 +1,11 @@
 import { IMAGE_SIZES } from '@/lib/constants';
-import { getImageUrl } from '@/lib/utils';
 import { useMovieVideos } from '@/hooks/useMovies';
 import type { Movie } from '@/types/movie';
 import { Link } from 'react-router-dom';
 import playIcon from '@/assets/icons/play-icon.svg';
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import MovieImage from './MovieImage';
 
 interface HeroProps {
   movies: Movie[];
@@ -40,16 +40,21 @@ export default function HeroSection({ movies }: HeroProps) {
     <section className='border-2 border-amber-400 max-w-360 mx-auto md:relative'>
       <div className='relative aspect-video overflow-hidden'>
         <AnimatePresence initial={false}>
-          <motion.img
+          <motion.div
             key={movie.id}
-            src={getImageUrl(movie.backdrop_path, IMAGE_SIZES.backdrop.large)}
-            alt={movie.title}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
-            className='absolute inset-0 w-full h-full object-cover object-center'
-          />
+            className='absolute inset-0'
+          >
+            <MovieImage
+              path={movie.backdrop_path}
+              alt={movie.title}
+              size={IMAGE_SIZES.backdrop.large}
+              className='w-full h-full object-cover object-center'
+            />
+          </motion.div>
         </AnimatePresence>
 
         <div className='absolute inset-none bg-linear-to-t from-base-black via-base-black/45 to-transparent' />
