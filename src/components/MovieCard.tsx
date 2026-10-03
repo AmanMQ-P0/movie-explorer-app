@@ -8,13 +8,23 @@ interface MovieCardProps {
 }
 
 export default function MovieCard({ movie }: MovieCardProps) {
+  const posterUrl = getImageUrl(movie.poster_path, IMAGE_SIZES.poster.medium);
+
   return (
     <article className='flex flex-col w-full h-full'>
-      <img
-        src={getImageUrl(movie.poster_path, IMAGE_SIZES.poster.medium)}
-        alt={movie.title}
-        className='w-full aspect-2/3 rounded-xl object-cover'
-      />
+      {posterUrl ? (
+        <img
+          src={posterUrl}
+          alt={movie.title}
+          className='w-full aspect-2/3 rounded-xl object-cover'
+        />
+      ) : (
+        <div
+          role='img'
+          aria-label={`Poster ${movie.title} tidak tersedia`}
+          className='w-full aspect-2/3 rounded-xl bg-neutral-800'
+        />
+      )}
 
       <h3 className='text-md font-semibold pt-md lg:text-lg'>{movie.title}</h3>
 
