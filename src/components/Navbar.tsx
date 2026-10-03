@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Search, AlignJustify, X } from 'lucide-react';
 import iconTv from '@/assets/icons/tv-icon.svg';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,51 +85,56 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {isMenuOpen && (
-        <div id='mobile-menu' className='bg-base-black fixed inset-0 lg:hidden'>
-          <div className='px-xl pt-xl'>
-            <div className='max-h-7xl flex items-center justify-between'>
-              <Link
-                to='/'
-                aria-label='Movie Explorer home'
-                onClick={() => setIsMenuOpen(false)}
-                className='flex items-center gap-xs'
-              >
-                <img src={iconTv} alt='' />
-                <span className='text-xl font-semibold tracking-[-0.04em]'>
-                  Movie
-                </span>
-              </Link>
+      {isMenuOpen &&
+        createPortal(
+          <div
+            id='mobile-menu'
+            className='bg-base-black fixed inset-0 z-110 lg:hidden'
+          >
+            <div className='px-xl pt-xl'>
+              <div className='max-h-7xl flex items-center justify-between'>
+                <Link
+                  to='/'
+                  aria-label='Movie Explorer home'
+                  onClick={() => setIsMenuOpen(false)}
+                  className='flex items-center gap-xs'
+                >
+                  <img src={iconTv} alt='' />
+                  <span className='text-xl font-semibold tracking-[-0.04em]'>
+                    Movie
+                  </span>
+                </Link>
 
-              <button
-                type='button'
-                aria-label='Close menu'
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <X aria-hidden='true' />
-              </button>
+                <button
+                  type='button'
+                  aria-label='Close menu'
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <X aria-hidden='true' />
+                </button>
+              </div>
+
+              <nav className='mt-12 flex flex-col gap-xl'>
+                <NavLink
+                  to='/'
+                  onClick={() => setIsMenuOpen(false)}
+                  className='text-md font-normal text-base-white'
+                >
+                  Home
+                </NavLink>
+
+                <NavLink
+                  to='/favorites'
+                  onClick={() => setIsMenuOpen(false)}
+                  className='text-md font-normal text-base-white'
+                >
+                  Favorites
+                </NavLink>
+              </nav>
             </div>
-
-            <nav className='mt-12 flex flex-col gap-xl'>
-              <NavLink
-                to='/'
-                onClick={() => setIsMenuOpen(false)}
-                className='text-md font-normal text-base-white'
-              >
-                Home
-              </NavLink>
-
-              <NavLink
-                to='/favorites'
-                onClick={() => setIsMenuOpen(false)}
-                className='text-md font-normal text-base-white'
-              >
-                Favorites
-              </NavLink>
-            </nav>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </header>
   );
 }
