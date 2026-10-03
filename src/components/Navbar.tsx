@@ -60,7 +60,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <div className='hidden lg:flex items-center gap-6xl'>
+          <div className='hidden md:flex items-center gap-6xl'>
             <NavLink to='/' className='text-md font-normal text-base-white'>
               Home
             </NavLink>
@@ -77,10 +77,10 @@ export default function Navbar() {
           <Link
             to='/search'
             aria-label='Search movies'
-            className='flex justify-center items-center lg:py-md lg:px-xl lg:border lg:border-neutral-800 lg:rounded-2xl lg:gap-md lg:w-60 lg:justify-start'
+            className='flex justify-center items-center md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:gap-md md:w-60 md:justify-start'
           >
             <Search aria-hidden='true' className='lg:text-neutral-500' />
-            <span className='hidden lg:block text-md font-normal text-neutral-500'>
+            <span className='hidden md:block text-md font-normal text-neutral-500'>
               Search Movie
             </span>
           </Link>
@@ -91,7 +91,7 @@ export default function Navbar() {
             aria-expanded={isMenuOpen}
             aria-controls='mobile-menu'
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className='lg:hidden'
+            className='md:hidden'
           >
             <AlignJustify aria-hidden='true' />
           </button>
