@@ -107,7 +107,7 @@ export default function Navbar() {
               exit={{ x: '100%' }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
               id='mobile-menu'
-              className='bg-base-black fixed inset-0 z-110 lg:hidden'
+              className='bg-base-black fixed inset-0 z-110 md:hidden'
             >
               <div className='px-xl pt-xl'>
                 <div className='max-h-7xl flex items-center justify-between'>
