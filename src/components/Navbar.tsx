@@ -88,6 +88,7 @@ export default function Navbar() {
 
           <Button
             type='button'
+            variant='ghost'
             aria-label='Open menu'
             aria-expanded={isMenuOpen}
             aria-controls='mobile-menu'
@@ -125,6 +126,7 @@ export default function Navbar() {
 
                   <Button
                     type='button'
+                    variant='ghost'
                     aria-label='Close menu'
                     onClick={() => setIsMenuOpen(false)}
                   >
