@@ -146,20 +146,16 @@ export default function Navbar() {
                 </div>
 
                 <nav className='mt-12 flex flex-col gap-xl'>
-                  <NavLink
-                    to='/'
-                    onClick={() => setIsMenuOpen(false)}
-                    className='text-md font-normal text-base-white'
-                  >
-                    Home
+                  <NavLink to='/' onClick={() => setIsMenuOpen(false)}>
+                    <span className='text-md font-normal text-base-white hover:text-neutral-400 transition-colors duration-300 ease-in-out'>
+                      Home
+                    </span>
                   </NavLink>
 
-                  <NavLink
-                    to='/favorites'
-                    onClick={() => setIsMenuOpen(false)}
-                    className='text-md font-normal text-base-white'
-                  >
-                    Favorites
+                  <NavLink to='/favorites' onClick={() => setIsMenuOpen(false)}>
+                    <span className='text-md font-normal text-base-white hover:text-neutral-400 transition-colors duration-300 ease-in-out'>
+                      Favorites
+                    </span>
                   </NavLink>
                 </nav>
               </div>
