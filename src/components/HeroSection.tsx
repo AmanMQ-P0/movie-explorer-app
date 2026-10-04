@@ -87,7 +87,7 @@ export default function HeroSection({ movies }: HeroProps) {
                   <a
                     href={`https://www.youtube.com/watch?v=${trailer.key}`}
                     target='_blank'
-                    rel='noreferrer'
+                    rel='noopener noreferrer'
                   >
                     <span>Watch Trailer</span>
                     <img src={playIcon} alt='' />
