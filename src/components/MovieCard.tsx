@@ -10,7 +10,7 @@ interface MovieCardProps {
 
 export default function MovieCard({ movie, rank }: MovieCardProps) {
   return (
-    <article className='flex flex-col w-full h-full'>
+    <article className='flex flex-col w-full h-full relative'>
       <MovieImage
         path={movie.poster_path}
         alt={movie.title}
@@ -29,7 +29,9 @@ export default function MovieCard({ movie, rank }: MovieCardProps) {
       </div>
 
       {rank !== undefined && (
-        <span className='absolute top-2 left-2'>{rank}</span>
+        <span className='absolute top-md left-md bg-base-black/60 w-4xl h-4xl rounded-full flex justify-center items-center text-sm font-semibold md:w-6xl md:h-6xl md:top-lg md:left-lg md:text-lg'>
+          {rank}
+        </span>
       )}
     </article>
   );
