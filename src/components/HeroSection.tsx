@@ -95,12 +95,11 @@ export default function HeroSection({ movies }: HeroProps) {
                 </Button>
               )}
 
-              <Link
-                to={`/movie/${movie.id}`}
-                className='border border-neutral-900 text-sm font-semibold rounded-full flex p-md justify-center items-center bg-base-black/40 sm:w-57.5'
-              >
-                <span>See Detail</span>
-              </Link>
+              <Button asChild variant='secondary'>
+                <Link to={`/movie/${movie.id}`}>
+                  <span>See Detail</span>
+                </Link>
+              </Button>
             </div>
           </motion.div>
         </AnimatePresence>
