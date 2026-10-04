@@ -5,9 +5,10 @@ import MovieImage from './MovieImage';
 
 interface MovieCardProps {
   movie: Movie;
+  rank?: number;
 }
 
-export default function MovieCard({ movie }: MovieCardProps) {
+export default function MovieCard({ movie, rank }: MovieCardProps) {
   return (
     <article className='flex flex-col w-full h-full'>
       <MovieImage
