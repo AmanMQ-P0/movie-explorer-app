@@ -80,7 +80,7 @@ export default function Navbar() {
             aria-label='Search movies'
             className='flex justify-center items-center md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:gap-md md:w-60 md:justify-start'
           >
-            <Search aria-hidden='true' className='lg:text-neutral-500' />
+            <Search aria-hidden='true' className='md:text-neutral-500' />
             <span className='hidden md:block text-md font-normal text-neutral-500'>
               Search Movie
             </span>
