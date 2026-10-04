@@ -71,12 +71,15 @@ export default function Navbar() {
           </Link>
 
           <div className='hidden md:flex items-center gap-6xl'>
-            <NavLink to='/' className='text-md font-normal text-base-white'>
+            <NavLink
+              to='/'
+              className='group relative px-md py-sm text-md font-normal text-base-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-base-white after:transition-all after:duration-300 after:ease-out hover:after:w-full before:absolute before:inset-0 before:-z-10 before:bg-base-black/60 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-x-100'
+            >
               Home
             </NavLink>
             <NavLink
               to='/favorites'
-              className='text-md font-normal text-base-white'
+              className='group relative px-md py-sm text-md font-normal text-base-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-base-white after:transition-all after:duration-300 after:ease-out hover:after:w-full before:absolute before:inset-0 before:-z-10 before:bg-base-black/60 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-x-100'
             >
               Favorites
             </NavLink>
