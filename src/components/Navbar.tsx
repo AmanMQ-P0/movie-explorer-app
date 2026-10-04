@@ -1,10 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Search, AlignJustify, X } from 'lucide-react';
-import iconTv from '@/assets/icons/tv-icon.svg';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from './ui/button';
+import { Logo } from './Logo';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,15 +66,8 @@ export default function Navbar() {
     >
       <nav className='border-2 border-blue-600 flex justify-between items-center w-full'>
         <div className='flex items-center gap-8xl'>
-          <Link
-            to='/'
-            aria-label='Movie Explorer home'
-            className='flex items-center gap-xs lg:gap-md'
-          >
-            <img src={iconTv} alt='' className='md:w-10 md:h-10' />
-            <span className='text-xl font-semibold tracking-[-0.04em] lg:text-display-sm'>
-              Movie
-            </span>
+          <Link to='/' aria-label='Movie Explorer home'>
+            <Logo />
           </Link>
 
           <div className='hidden md:flex items-center gap-6xl'>
@@ -132,12 +125,8 @@ export default function Navbar() {
                     to='/'
                     aria-label='Movie Explorer home'
                     onClick={() => setIsMenuOpen(false)}
-                    className='flex items-center gap-xs'
                   >
-                    <img src={iconTv} alt='' />
-                    <span className='text-xl font-semibold tracking-[-0.04em]'>
-                      Movie
-                    </span>
+                    <Logo />
                   </Link>
 
                   <Button
