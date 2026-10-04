@@ -27,6 +27,10 @@ export default function MovieCard({ movie, rank }: MovieCardProps) {
           {movie.vote_average.toFixed(1)}/10
         </p>
       </div>
+
+      {rank !== undefined && (
+        <span className='absolute top-2 left-2'>{rank}</span>
+      )}
     </article>
   );
 }
