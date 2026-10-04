@@ -7,6 +7,8 @@ export const buttonVariants = cva('cursor-pointer', {
         'bg-primary-300 hover:bg-primary-300/80 text-sm font-semibold rounded-full flex p-md justify-center items-center gap-md sm:w-57.5',
       secondary:
         'border border-neutral-900 text-sm font-semibold rounded-full flex p-md justify-center items-center bg-base-black/60 hover:bg-neutral-800 sm:w-57.5',
+      circular:
+        'absolute top-55 p-1.75 w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70',
     },
   },
 });

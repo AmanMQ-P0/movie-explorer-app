@@ -2,6 +2,7 @@ import MovieCard from '@/components/MovieCard';
 import type { Movie } from '@/types/movie';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
+import { Button } from './ui/button';
 
 interface TrendingNowProps {
   movies: Movie[];
@@ -75,25 +76,27 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
           <div className='w-10 sm:w-40 md:w-80 absolute right-none bg-linear-to-l from-base-black via-base-black/70 to-base-black/0 inset-y-none pointer-events-none' />
         </div>
 
-        <button
+        <Button
+          variant='circular'
           type='button'
           aria-label='Scroll trending movies to the right'
           onClick={() => handleScroll('right')}
           disabled={!canScrollRight}
-          className={`absolute -right-xxs top-55 p-1.75 ${canScrollRight ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 lg:right-5xl`}
+          className={`-right-xxs ${canScrollRight ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} lg:right-5xl`}
         >
           <ChevronRight aria-hidden='true' />
-        </button>
+        </Button>
 
-        <button
+        <Button
+          variant='circular'
           type='button'
           aria-label='Scroll trending movies to the left'
           onClick={() => handleScroll('left')}
           disabled={!canScrollLeft}
-          className={`absolute -left-xxs top-55 p-1.75 ${canScrollLeft ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} w-11 h-11 rounded-full flex justify-center items-center lg:w-14 lg:h-14 lg:p-md lg:top-70 xl:left-40`}
+          className={`-left-xxs ${canScrollLeft ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} xl:left-40`}
         >
           <ChevronLeft aria-hidden='true' />
-        </button>
+        </Button>
       </div>
     </section>
   );
