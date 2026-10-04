@@ -90,7 +90,7 @@ export default function Navbar() {
           <Link
             to='/search'
             aria-label='Search movies'
-            className='flex justify-center items-center md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:gap-md md:w-60 md:justify-start group hover:bg-base-black/60 hover:border-neutral-400 transition-colors duration-300 ease-in-out'
+            className='flex justify-center items-center md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:gap-md md:w-60 md:justify-start md:group md:hover:bg-base-black/60 md:hover:border-neutral-400 transition-colors duration-300 ease-in-out'
           >
             <Search
               aria-hidden='true'
