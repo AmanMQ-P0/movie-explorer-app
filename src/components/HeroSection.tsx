@@ -6,6 +6,7 @@ import playIcon from '@/assets/icons/play-icon.svg';
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import MovieImage from './MovieImage';
+import { Button } from './ui/button';
 
 interface HeroProps {
   movies: Movie[];
@@ -82,15 +83,16 @@ export default function HeroSection({ movies }: HeroProps) {
 
             <div className='flex flex-col gap-xl sm:flex-row sm:justify-center sm:items-center md:justify-start'>
               {trailer && (
-                <a
-                  href={`https://www.youtube.com/watch?v=${trailer.key}`}
-                  target='_blank'
-                  rel='noreferrer'
-                  className='bg-primary-300 text-sm font-semibold rounded-full flex p-md justify-center items-center gap-md sm:w-57.5'
-                >
-                  <span>Watch Trailer</span>
-                  <img src={playIcon} alt='' />
-                </a>
+                <Button variant='primary' asChild>
+                  <a
+                    href={`https://www.youtube.com/watch?v=${trailer.key}`}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    <span>Watch Trailer</span>
+                    <img src={playIcon} alt='' />
+                  </a>
+                </Button>
               )}
 
               <Link
