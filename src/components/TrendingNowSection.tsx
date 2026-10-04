@@ -3,12 +3,17 @@ import type { Movie } from '@/types/movie';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 import { Button } from './ui/button';
+import TrendingNowSkeleton from './TrendingNowSkeleton';
 
 interface TrendingNowProps {
   movies: Movie[];
+  isLoading: boolean;
 }
 
-export default function TrendingNowSection({ movies }: TrendingNowProps) {
+export default function TrendingNowSection({
+  movies,
+  isLoading,
+}: TrendingNowProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -50,6 +55,7 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
 
   return (
     <section
+      aria-busy={isLoading}
       id='trending-now'
       className='border-2 border-amber-400 max-w-360 mx-auto px-xl pt-5xl relative lg:pb-8xl xl:pt-none xl:pl-11xl xl:pr-none'
     >
@@ -59,19 +65,26 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
         </h2>
 
         <div className='relative'>
-          <div
-            ref={sliderRef}
-            className='flex gap-xl overflow-x-auto scrollbar-none lg:gap-2xl'
-          >
-            {movies.map((movie, index) => (
-              <div
-                key={movie.id}
-                className='w-33 sm:w-40 md:w-50 shrink-0 lg:w-55'
-              >
-                <MovieCard movie={movie} rank={index + 1} />
-              </div>
-            ))}
-          </div>
+          {isLoading ? (
+            <div role='status'>
+              <span className='sr-only'>Loading trending movies...</span>
+              <TrendingNowSkeleton />
+            </div>
+          ) : (
+            <div
+              ref={sliderRef}
+              className='flex gap-xl overflow-x-auto scrollbar-none lg:gap-2xl'
+            >
+              {movies.map((movie, index) => (
+                <div
+                  key={movie.id}
+                  className='w-33 sm:w-40 md:w-50 shrink-0 lg:w-55'
+                >
+                  <MovieCard movie={movie} rank={index + 1} />
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className='w-10 sm:w-40 md:w-80 absolute right-none bg-linear-to-l from-base-black via-base-black/70 to-base-black/0 inset-y-none pointer-events-none' />
         </div>
