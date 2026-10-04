@@ -4,6 +4,7 @@ import iconTv from '@/assets/icons/tv-icon.svg';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Button } from './ui/button';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -85,16 +86,15 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <button
+          <Button
             type='button'
             aria-label='Open menu'
             aria-expanded={isMenuOpen}
             aria-controls='mobile-menu'
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className='md:hidden'
           >
             <AlignJustify aria-hidden='true' />
-          </button>
+          </Button>
         </div>
       </nav>
 
@@ -123,13 +123,13 @@ export default function Navbar() {
                     </span>
                   </Link>
 
-                  <button
+                  <Button
                     type='button'
                     aria-label='Close menu'
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <X aria-hidden='true' />
-                  </button>
+                  </Button>
                 </div>
 
                 <nav className='mt-12 flex flex-col gap-xl'>
