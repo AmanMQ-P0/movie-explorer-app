@@ -90,10 +90,13 @@ export default function Navbar() {
           <Link
             to='/search'
             aria-label='Search movies'
-            className='flex justify-center items-center md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:gap-md md:w-60 md:justify-start'
+            className='flex justify-center items-center md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:gap-md md:w-60 md:justify-start group hover:bg-base-black/60 hover:border-neutral-400 transition-colors duration-300 ease-in-out'
           >
-            <Search aria-hidden='true' className='md:text-neutral-500' />
-            <span className='hidden md:block text-md font-normal text-neutral-500'>
+            <Search
+              aria-hidden='true'
+              className='md:text-neutral-500 group-hover:text-neutral-25 transition-colors duration-300 ease-in-out'
+            />
+            <span className='hidden md:block text-md font-normal text-neutral-500 group-hover:text-neutral-25 transition-colors duration-300 ease-in-out'>
               Search Movie
             </span>
           </Link>
