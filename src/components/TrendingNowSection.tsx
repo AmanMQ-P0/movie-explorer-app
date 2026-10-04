@@ -63,12 +63,12 @@ export default function TrendingNowSection({ movies }: TrendingNowProps) {
             ref={sliderRef}
             className='flex gap-xl overflow-x-auto scrollbar-none lg:gap-2xl'
           >
-            {movies.map((movie) => (
+            {movies.map((movie, index) => (
               <div
                 key={movie.id}
                 className='w-33 sm:w-40 md:w-50 shrink-0 lg:w-55'
               >
-                <MovieCard movie={movie} />
+                <MovieCard movie={movie} rank={index + 1} />
               </div>
             ))}
           </div>
