@@ -13,7 +13,6 @@ export default function HomePage() {
     fetchNextPage,
     isFetchingNextPage,
     isLoading: isNowPlayingLoading,
-    isError: isNowPlayingError,
     isFetchNextPageError,
   } = useNowPlayingMovies();
 
