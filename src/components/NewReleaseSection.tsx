@@ -36,8 +36,8 @@ export default function NewReleaseSection({
   const visibleMovieCount = moviesPerLoad * pageCount;
 
   return (
-    <section className='border-2 border-amber-400 max-w-360 mx-auto pt-none px-xl pb-5xl xl:px-11xl xl:py-none'>
-      <div className='border-2 border-blue-600 relative flex flex-col gap-3xl xl:gap-5xl'>
+    <section className='max-w-360 mx-auto pt-none px-xl pb-5xl xl:px-11xl xl:py-none'>
+      <div className='relative flex flex-col gap-3xl xl:gap-5xl'>
         <h2 className='text-display-xs font-bold lg:text-display-lg'>
           New Release
         </h2>
