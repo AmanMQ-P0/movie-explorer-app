@@ -62,9 +62,9 @@ export default function TrendingNowSection({
     <section
       aria-busy={isLoading}
       id='trending-now'
-      className='border-2 border-amber-400 max-w-360 mx-auto px-xl pt-5xl relative lg:pb-8xl xl:pt-none xl:pl-11xl xl:pr-none'
+      className='max-w-360 mx-auto px-xl pt-5xl relative lg:pb-8xl xl:pt-none xl:pl-11xl xl:pr-none'
     >
-      <div className='border-2 border-blue-600 overflow-hidden flex flex-col gap-3xl xl:gap-5xl'>
+      <div className='overflow-hidden flex flex-col gap-3xl xl:gap-5xl'>
         <h2 className='text-display-xs font-bold lg:text-display-lg'>
           Trending Now
         </h2>
