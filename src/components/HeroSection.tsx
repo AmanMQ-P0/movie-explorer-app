@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import MovieImage from './MovieImage';
 import { Button } from './ui/button';
 import HeroSkeleton from './HeroSkeleton';
+import ErrorInitialState from './ErrorInitialState';
 
 interface HeroProps {
   movies: Movie[];
@@ -53,20 +54,7 @@ export default function HeroSection({
   if (isError) {
     return (
       <section className='max-w-360 mx-auto'>
-        <div className='flex flex-col items-center justify-center gap-xl w-full h-100'>
-          <p role='alert' className='text-center xl:text-md'>
-            Failed to load movies.
-          </p>
-
-          <Button
-            type='button'
-            variant='secondary'
-            onClick={onRetry}
-            className='w-50 h-11 xl:w-58 xl:h-13 xl:text-md'
-          >
-            Try Again
-          </Button>
-        </div>
+        <ErrorInitialState message='Failed to load movies.' onRetry={onRetry} />
       </section>
     );
   }
