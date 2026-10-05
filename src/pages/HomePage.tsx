@@ -36,9 +36,10 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      {popularMovies.data && (
-        <HeroSection movies={popularMovies.data.results} />
-      )}
+      <HeroSection
+        movies={popularMovies.data?.results ?? []}
+        isLoading={popularMovies.isLoading}
+      />
 
       <main>
         <TrendingNowSection
