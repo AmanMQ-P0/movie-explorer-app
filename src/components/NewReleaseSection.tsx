@@ -3,6 +3,7 @@ import type { Movie } from '@/types/movie';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Button } from '@/components/ui/button';
 import NewReleaseSkeleton from './NewReleaseSkeleton';
+import ErrorInitialState from './ErrorInitialState';
 
 interface NewReleaseProps {
   movies: Movie[];
@@ -44,20 +45,10 @@ export default function NewReleaseSection({
         {isLoading ? (
           <NewReleaseSkeleton />
         ) : isError ? (
-          <div className='flex flex-col items-center justify-center gap-xl w-full h-100'>
-            <p role='alert' className='text-center xl:text-md'>
-              Failed to load movies.
-            </p>
-
-            <Button
-              type='button'
-              variant='secondary'
-              onClick={onRetry}
-              className='w-50 h-11 xl:w-58 xl:h-13 xl:text-md'
-            >
-              Try Again
-            </Button>
-          </div>
+          <ErrorInitialState
+            message='Failed to load movies.'
+            onRetry={onRetry}
+          />
         ) : (
           <div className='grid grid-cols-2 gap-x-xl gap-y-4xl sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
             {movies.slice(0, visibleMovieCount).map((movie) => (
