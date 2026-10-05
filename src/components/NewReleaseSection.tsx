@@ -2,6 +2,7 @@ import MovieCard from '@/components/MovieCard';
 import type { Movie } from '@/types/movie';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Button } from '@/components/ui/button';
+import NewReleaseSkeleton from './NewReleaseSkeleton';
 
 interface NewReleaseProps {
   movies: Movie[];
@@ -10,6 +11,7 @@ interface NewReleaseProps {
   isFetchingNextPage: boolean;
   isFetchNextPageError: boolean;
   onLoadMore: () => Promise<unknown>;
+  isLoading: boolean;
 }
 
 export default function NewReleaseSection({
@@ -19,6 +21,7 @@ export default function NewReleaseSection({
   isFetchingNextPage,
   isFetchNextPageError,
   onLoadMore,
+  isLoading,
 }: NewReleaseProps) {
   const isSm = useMediaQuery('(min-width: 640px)');
   const isMd = useMediaQuery('(min-width: 768px)');
@@ -34,11 +37,15 @@ export default function NewReleaseSection({
           New Release
         </h2>
 
-        <div className='grid grid-cols-2 gap-x-xl gap-y-4xl sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
-          {movies.slice(0, visibleMovieCount).map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
+        {isLoading ? (
+          <NewReleaseSkeleton />
+        ) : (
+          <div className='grid grid-cols-2 gap-x-xl gap-y-4xl sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
+            {movies.slice(0, visibleMovieCount).map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
+        )}
 
         <div className='pointer-events-none absolute inset-x-0 bottom-0 h-60 bg-linear-to-t from-base-black via-base-black/90 to-transparent' />
 
