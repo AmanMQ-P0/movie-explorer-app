@@ -32,9 +32,10 @@ export const useNowPlayingMovies = () => {
 
 // TODO: Add more hooks for different endpoints
 // Examples: useMovieDetails, useSearchMovies, useNowPlayingMovies
-export const useMovieVideos = (movieId: number) => {
+export const useMovieVideos = (movieId: number | undefined) => {
   return useQuery({
-    queryKey: QUERY_KEYS.movies.videos(movieId),
-    queryFn: () => movieService.getMovieVideos(movieId),
+    queryKey: QUERY_KEYS.movies.videos(movieId!),
+    queryFn: () => movieService.getMovieVideos(movieId!),
+    enabled: movieId !== undefined,
   });
 };
