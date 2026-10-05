@@ -14,6 +14,8 @@ export default function HomePage() {
     isFetchingNextPage,
     isLoading: isNowPlayingLoading,
     isFetchNextPageError,
+    isError: isNowPlayingError,
+    refetch: refetchNowPlaying,
   } = useNowPlayingMovies();
 
   const newReleaseMovies = [
@@ -54,6 +56,8 @@ export default function HomePage() {
           isFetchNextPageError={isFetchNextPageError}
           onLoadMore={fetchNextPage}
           isLoading={isNowPlayingLoading}
+          isError={isNowPlayingError}
+          onRetry={refetchNowPlaying}
         />
       </main>
 
