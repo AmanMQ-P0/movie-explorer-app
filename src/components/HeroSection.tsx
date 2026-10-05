@@ -60,7 +60,7 @@ export default function HeroSection({
   }
 
   return (
-    <section className='border-2 border-amber-400 max-w-360 mx-auto md:relative'>
+    <section className='max-w-360 mx-auto md:relative'>
       <div className='relative aspect-video overflow-hidden'>
         <AnimatePresence initial={false}>
           <motion.div
@@ -91,7 +91,7 @@ export default function HeroSection({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
-            className='border-2 border-blue-600 flex flex-col gap-3xl md:w-2/3 lg:gap-6xl'
+            className='flex flex-col gap-3xl md:w-2/3 lg:gap-6xl'
           >
             <div className='flex flex-col gap-sm'>
               <h1 className='text-display-xs font-bold line-clamp-1 lg:line-clamp-2 lg:text-display-2xl'>
