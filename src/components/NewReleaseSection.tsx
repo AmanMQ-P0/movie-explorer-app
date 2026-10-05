@@ -1,7 +1,7 @@
 import MovieCard from '@/components/MovieCard';
 import type { Movie } from '@/types/movie';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 
 interface NewReleaseProps {
   movies: Movie[];
