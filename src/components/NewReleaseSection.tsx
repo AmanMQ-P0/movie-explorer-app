@@ -12,6 +12,8 @@ interface NewReleaseProps {
   isFetchNextPageError: boolean;
   onLoadMore: () => Promise<unknown>;
   isLoading: boolean;
+  isError: boolean;
+  onRetry: () => Promise<unknown>;
 }
 
 export default function NewReleaseSection({
@@ -22,6 +24,8 @@ export default function NewReleaseSection({
   isFetchNextPageError,
   onLoadMore,
   isLoading,
+  isError,
+  onRetry,
 }: NewReleaseProps) {
   const isSm = useMediaQuery('(min-width: 640px)');
   const isMd = useMediaQuery('(min-width: 768px)');
@@ -39,6 +43,21 @@ export default function NewReleaseSection({
 
         {isLoading ? (
           <NewReleaseSkeleton />
+        ) : isError ? (
+          <div className='flex flex-col items-center justify-center gap-xl w-full h-100'>
+            <p role='alert' className='text-center xl:text-md'>
+              Failed to load movies.
+            </p>
+
+            <Button
+              type='button'
+              variant='secondary'
+              onClick={onRetry}
+              className='w-50 h-11 xl:w-58 xl:h-13 xl:text-md'
+            >
+              Try Again
+            </Button>
+          </div>
         ) : (
           <div className='grid grid-cols-2 gap-x-xl gap-y-4xl sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
             {movies.slice(0, visibleMovieCount).map((movie) => (
@@ -47,7 +66,7 @@ export default function NewReleaseSection({
           </div>
         )}
 
-        {!isLoading && (
+        {!isLoading && !isError && (
           <div className='pointer-events-none absolute inset-x-0 bottom-0 h-60 bg-linear-to-t from-base-black via-base-black/90 to-transparent' />
         )}
 
@@ -69,7 +88,7 @@ export default function NewReleaseSection({
           </div>
         )}
 
-        {!isLoading && hasNextPage && !isFetchNextPageError && (
+        {!isLoading && !isError && hasNextPage && !isFetchNextPageError && (
           <Button
             type='button'
             onClick={onLoadMore}
