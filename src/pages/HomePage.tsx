@@ -56,7 +56,7 @@ export default function HomePage() {
           isFetchNextPageError={isFetchNextPageError}
           onLoadMore={fetchNextPage}
           isLoading={isNowPlayingLoading}
-          isError={isNowPlayingError}
+          isError={isNowPlayingError && !nowPlayingData}
           onRetry={refetchNowPlaying}
         />
       </main>
