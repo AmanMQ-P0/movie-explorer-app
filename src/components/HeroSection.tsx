@@ -12,9 +12,16 @@ import HeroSkeleton from './HeroSkeleton';
 interface HeroProps {
   movies: Movie[];
   isLoading: boolean;
+  isError: boolean;
+  onRetry: () => Promise<unknown>;
 }
 
-export default function HeroSection({ movies, isLoading }: HeroProps) {
+export default function HeroSection({
+  movies,
+  isLoading,
+  isError,
+  onRetry,
+}: HeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const movie = movies[activeIndex];
@@ -41,6 +48,27 @@ export default function HeroSection({ movies, isLoading }: HeroProps) {
 
   if (isLoading) {
     return <HeroSkeleton />;
+  }
+
+  if (isError) {
+    return (
+      <section className='max-w-360 mx-auto'>
+        <div className='flex flex-col items-center justify-center gap-xl w-full h-100'>
+          <p role='alert' className='text-center xl:text-md'>
+            Failed to load movies.
+          </p>
+
+          <Button
+            type='button'
+            variant='secondary'
+            onClick={onRetry}
+            className='w-50 h-11 xl:w-58 xl:h-13 xl:text-md'
+          >
+            Try Again
+          </Button>
+        </div>
+      </section>
+    );
   }
 
   return (
