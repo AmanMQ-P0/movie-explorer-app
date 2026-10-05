@@ -40,12 +40,16 @@ export default function HomePage() {
       <HeroSection
         movies={popularMovies.data?.results ?? []}
         isLoading={popularMovies.isLoading}
+        isError={popularMovies.isError && !popularMovies.data}
+        onRetry={popularMovies.refetch}
       />
 
       <main>
         <TrendingNowSection
           movies={popularMovies.data?.results ?? []}
           isLoading={popularMovies.isLoading}
+          isError={popularMovies.isError && !popularMovies.data}
+          onRetry={popularMovies.refetch}
         />
 
         <NewReleaseSection
