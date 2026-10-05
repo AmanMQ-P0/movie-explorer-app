@@ -47,16 +47,15 @@ export default function HomePage() {
           isLoading={popularMovies.isLoading}
         />
 
-        {nowPlayingData && (
-          <NewReleaseSection
-            movies={newReleaseMovies}
-            pageCount={nowPlayingData.pages.length}
-            hasNextPage={hasNextPage}
-            isFetchingNextPage={isFetchingNextPage}
-            isFetchNextPageError={isFetchNextPageError}
-            onLoadMore={fetchNextPage}
-          />
-        )}
+        <NewReleaseSection
+          movies={newReleaseMovies}
+          pageCount={nowPlayingData?.pages.length ?? 0}
+          hasNextPage={hasNextPage ?? false}
+          isFetchingNextPage={isFetchingNextPage}
+          isFetchNextPageError={isFetchNextPageError}
+          onLoadMore={fetchNextPage}
+          isLoading={isNowPlayingLoading}
+        />
       </main>
 
       <Footer />
