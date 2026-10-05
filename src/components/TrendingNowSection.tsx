@@ -8,11 +8,15 @@ import TrendingNowSkeleton from './TrendingNowSkeleton';
 interface TrendingNowProps {
   movies: Movie[];
   isLoading: boolean;
+  isError: boolean;
+  onRetry: () => Promise<unknown>;
 }
 
 export default function TrendingNowSection({
   movies,
   isLoading,
+  isError,
+  onRetry,
 }: TrendingNowProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -70,6 +74,21 @@ export default function TrendingNowSection({
               <span className='sr-only'>Loading trending movies...</span>
               <TrendingNowSkeleton />
             </div>
+          ) : isError ? (
+            <div className='flex flex-col items-center justify-center gap-xl w-full h-100'>
+              <p role='alert' className='text-center xl:text-md'>
+                Failed to load movies.
+              </p>
+
+              <Button
+                type='button'
+                variant='secondary'
+                onClick={onRetry}
+                className='w-50 h-11 xl:w-58 xl:h-13 xl:text-md'
+              >
+                Try Again
+              </Button>
+            </div>
           ) : (
             <div
               ref={sliderRef}
@@ -86,12 +105,12 @@ export default function TrendingNowSection({
             </div>
           )}
 
-          {!isLoading && (
+          {!isLoading && !isError && (
             <div className='w-10 sm:w-40 md:w-80 absolute right-none bg-linear-to-l from-base-black via-base-black/70 to-base-black/0 inset-y-none pointer-events-none' />
           )}
         </div>
 
-        {!isLoading && (
+        {!isLoading && !isError && (
           <Button
             variant='circular'
             type='button'
@@ -104,7 +123,7 @@ export default function TrendingNowSection({
           </Button>
         )}
 
-        {!isLoading && (
+        {!isLoading && !isError && (
           <Button
             variant='circular'
             type='button'
