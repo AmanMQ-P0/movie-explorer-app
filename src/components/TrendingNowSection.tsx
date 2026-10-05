@@ -86,30 +86,36 @@ export default function TrendingNowSection({
             </div>
           )}
 
-          <div className='w-10 sm:w-40 md:w-80 absolute right-none bg-linear-to-l from-base-black via-base-black/70 to-base-black/0 inset-y-none pointer-events-none' />
+          {!isLoading && (
+            <div className='w-10 sm:w-40 md:w-80 absolute right-none bg-linear-to-l from-base-black via-base-black/70 to-base-black/0 inset-y-none pointer-events-none' />
+          )}
         </div>
 
-        <Button
-          variant='circular'
-          type='button'
-          aria-label='Scroll trending movies to the right'
-          onClick={() => handleScroll('right')}
-          disabled={!canScrollRight}
-          className={`-right-xxs ${canScrollRight ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} lg:right-5xl`}
-        >
-          <ChevronRight aria-hidden='true' />
-        </Button>
+        {!isLoading && (
+          <Button
+            variant='circular'
+            type='button'
+            aria-label='Scroll trending movies to the right'
+            onClick={() => handleScroll('right')}
+            disabled={!canScrollRight}
+            className={`-right-xxs ${canScrollRight ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} lg:right-5xl`}
+          >
+            <ChevronRight aria-hidden='true' />
+          </Button>
+        )}
 
-        <Button
-          variant='circular'
-          type='button'
-          aria-label='Scroll trending movies to the left'
-          onClick={() => handleScroll('left')}
-          disabled={!canScrollLeft}
-          className={`-left-xxs ${canScrollLeft ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} xl:left-40`}
-        >
-          <ChevronLeft aria-hidden='true' />
-        </Button>
+        {!isLoading && (
+          <Button
+            variant='circular'
+            type='button'
+            aria-label='Scroll trending movies to the left'
+            onClick={() => handleScroll('left')}
+            disabled={!canScrollLeft}
+            className={`-left-xxs ${canScrollLeft ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} xl:left-40`}
+          >
+            <ChevronLeft aria-hidden='true' />
+          </Button>
+        )}
       </div>
     </section>
   );
