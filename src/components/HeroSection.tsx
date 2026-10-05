@@ -7,12 +7,14 @@ import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import MovieImage from './MovieImage';
 import { Button } from './ui/button';
+import HeroSkeleton from './HeroSkeleton';
 
 interface HeroProps {
   movies: Movie[];
+  isLoading: boolean;
 }
 
-export default function HeroSection({ movies }: HeroProps) {
+export default function HeroSection({ movies, isLoading }: HeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const movie = movies[activeIndex];
@@ -27,7 +29,7 @@ export default function HeroSection({ movies }: HeroProps) {
     return () => clearInterval(intervalId);
   }, [movies.length]);
 
-  const videos = useMovieVideos(movie.id);
+  const videos = useMovieVideos(movie?.id);
 
   const youtubeTrailers =
     videos.data?.results.filter(
@@ -36,6 +38,10 @@ export default function HeroSection({ movies }: HeroProps) {
 
   const trailer =
     youtubeTrailers.find((video) => video.official) ?? youtubeTrailers[0];
+
+  if (isLoading) {
+    return <HeroSkeleton />;
+  }
 
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto md:relative'>
