@@ -4,6 +4,7 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import TrendingNowSkeleton from './TrendingNowSkeleton';
+import ErrorInitialState from './ErrorInitialState';
 
 interface TrendingNowProps {
   movies: Movie[];
@@ -75,20 +76,10 @@ export default function TrendingNowSection({
               <TrendingNowSkeleton />
             </div>
           ) : isError ? (
-            <div className='flex flex-col items-center justify-center gap-xl w-full h-100'>
-              <p role='alert' className='text-center xl:text-md'>
-                Failed to load movies.
-              </p>
-
-              <Button
-                type='button'
-                variant='secondary'
-                onClick={onRetry}
-                className='w-50 h-11 xl:w-58 xl:h-13 xl:text-md'
-              >
-                Try Again
-              </Button>
-            </div>
+            <ErrorInitialState
+              message='Failed to load movies.'
+              onRetry={onRetry}
+            />
           ) : (
             <div
               ref={sliderRef}
