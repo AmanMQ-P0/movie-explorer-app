@@ -121,7 +121,7 @@ export default function TrendingNowSection({
             aria-label='Scroll trending movies to the left'
             onClick={() => handleScroll('left')}
             disabled={!canScrollLeft}
-            className={`-left-xxs ${canScrollLeft ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} xl:left-40`}
+            className={`left-xxs ${canScrollLeft ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-base-black/60'} xl:left-40`}
           >
             <ChevronLeft aria-hidden='true' />
           </Button>
