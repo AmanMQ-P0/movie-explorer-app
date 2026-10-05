@@ -47,13 +47,15 @@ export default function NewReleaseSection({
           </div>
         )}
 
-        <div className='pointer-events-none absolute inset-x-0 bottom-0 h-60 bg-linear-to-t from-base-black via-base-black/90 to-transparent' />
+        {!isLoading && (
+          <div className='pointer-events-none absolute inset-x-0 bottom-0 h-60 bg-linear-to-t from-base-black via-base-black/90 to-transparent' />
+        )}
 
         {isFetchNextPageError && (
           <p role='alert'>Failed to load more movies. Please try again.</p>
         )}
 
-        {hasNextPage && (
+        {!isLoading && hasNextPage && (
           <Button
             type='button'
             onClick={onLoadMore}
