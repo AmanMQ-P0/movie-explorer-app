@@ -11,7 +11,7 @@ export default function NewReleaseSkeleton() {
   return (
     <div className='grid grid-cols-2 gap-x-xl gap-y-4xl sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
       {Array.from({ length: skeletonCount }, (_, index) => (
-        <div key={index} className='min-w-33 sm:min-w-40 shrink-0'>
+        <div key={index}>
           <div className='flex flex-col w-full h-full gap-md'>
             {/* Poster */}
             <Skeleton className='bg-neutral-900 w-full aspect-2/3 rounded-xl' />
