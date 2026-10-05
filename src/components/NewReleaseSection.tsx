@@ -52,10 +52,24 @@ export default function NewReleaseSection({
         )}
 
         {isFetchNextPageError && (
-          <p role='alert'>Failed to load more movies. Please try again.</p>
+          <div className='flex flex-col items-center gap-md absolute left-1/2 bottom-25 -translate-x-1/2'>
+            <p role='alert' className='text-center xl:text-md'>
+              Failed to load more movies.
+            </p>
+
+            <Button
+              type='button'
+              variant='secondary'
+              onClick={onLoadMore}
+              disabled={isFetchingNextPage}
+              className='w-50 h-11 xl:w-58 xl:h-13 xl:text-md'
+            >
+              {isFetchingNextPage ? 'Loading...' : 'Try Again'}
+            </Button>
+          </div>
         )}
 
-        {!isLoading && hasNextPage && (
+        {!isLoading && hasNextPage && !isFetchNextPageError && (
           <Button
             type='button'
             onClick={onLoadMore}
