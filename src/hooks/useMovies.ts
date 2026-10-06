@@ -39,3 +39,11 @@ export const useMovieVideos = (movieId: number | undefined) => {
     enabled: movieId !== undefined,
   });
 };
+
+export const useMovieDetails = (movieId: number | undefined) => {
+  return useQuery({
+    queryKey: QUERY_KEYS.movies.detail(movieId!),
+    queryFn: () => movieService.getMovieDetails(movieId!),
+    enabled: movieId !== undefined,
+  });
+};
