@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useMovieDetails } from '@/hooks/useMovies';
+import MovieDetailInfo from '@/components/MovieDetailInfo';
 
 export default function MovieDetailPage() {
   const { movieId } = useParams<{ movieId: string }>();
@@ -7,5 +8,9 @@ export default function MovieDetailPage() {
 
   const movieDetail = useMovieDetails(idNumber);
 
-  return <div>MovieDetailPage</div>;
+  if (!movieDetail.data) {
+    return null;
+  }
+
+  return <MovieDetailInfo movie={movieDetail.data} />;
 }
