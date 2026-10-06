@@ -36,3 +36,18 @@ export interface MovieVideosResponse {
 }
 
 // TODO: Add more types as needed (Genre, Video, etc.)
+export interface MovieGenre {
+  id: number;
+  name: string;
+}
+
+export interface MovieDetail {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string | null;
+  backdrop_path: string | null;
+  vote_average: number;
+  release_date: string;
+  genres: MovieGenre[];
+}
