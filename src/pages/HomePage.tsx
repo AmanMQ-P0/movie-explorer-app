@@ -1,7 +1,5 @@
 import { useNowPlayingMovies, usePopularMovies } from '@/hooks/useMovies';
-import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
-import Footer from '@/components/Footer';
 import TrendingNowSection from '@/components/TrendingNowSection';
 import NewReleaseSection from '@/components/NewReleaseSection';
 
@@ -34,9 +32,7 @@ export default function HomePage() {
   // const newReleaseMovies = [...movieMap.values()];
 
   return (
-    <>
-      <Navbar />
-
+    <main>
       <HeroSection
         movies={popularMovies.data?.results ?? []}
         isLoading={popularMovies.isLoading}
@@ -44,28 +40,24 @@ export default function HomePage() {
         onRetry={popularMovies.refetch}
       />
 
-      <main>
-        <TrendingNowSection
-          movies={popularMovies.data?.results ?? []}
-          isLoading={popularMovies.isLoading}
-          isError={popularMovies.isError && !popularMovies.data}
-          onRetry={popularMovies.refetch}
-        />
+      <TrendingNowSection
+        movies={popularMovies.data?.results ?? []}
+        isLoading={popularMovies.isLoading}
+        isError={popularMovies.isError && !popularMovies.data}
+        onRetry={popularMovies.refetch}
+      />
 
-        <NewReleaseSection
-          movies={newReleaseMovies}
-          pageCount={nowPlayingData?.pages.length ?? 0}
-          hasNextPage={hasNextPage ?? false}
-          isFetchingNextPage={isFetchingNextPage}
-          isFetchNextPageError={isFetchNextPageError}
-          onLoadMore={fetchNextPage}
-          isLoading={isNowPlayingLoading}
-          isError={isNowPlayingError && !nowPlayingData}
-          onRetry={refetchNowPlaying}
-        />
-      </main>
-
-      <Footer />
-    </>
+      <NewReleaseSection
+        movies={newReleaseMovies}
+        pageCount={nowPlayingData?.pages.length ?? 0}
+        hasNextPage={hasNextPage ?? false}
+        isFetchingNextPage={isFetchingNextPage}
+        isFetchNextPageError={isFetchNextPageError}
+        onLoadMore={fetchNextPage}
+        isLoading={isNowPlayingLoading}
+        isError={isNowPlayingError && !nowPlayingData}
+        onRetry={refetchNowPlaying}
+      />
+    </main>
   );
 }
