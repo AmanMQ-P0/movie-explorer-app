@@ -51,3 +51,23 @@ export interface MovieDetail {
   release_date: string;
   genres: MovieGenre[];
 }
+
+export interface MovieCast {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+}
+
+export interface MovieCrew {
+  id: number;
+  name: string;
+  job: string;
+  profile_path: string | null;
+}
+
+export interface MovieCreditsResponse {
+  id: number;
+  cast: MovieCast[];
+  crew: MovieCrew[];
+}
