@@ -1,4 +1,6 @@
 import type { MovieDetail } from '@/types/movie';
+import MovieImage from './MovieImage';
+import { IMAGE_SIZES } from '@/lib/constants';
 
 interface MovieDetailInfoProps {
   movie: MovieDetail;
@@ -21,7 +23,11 @@ export default function MovieDetailInfo({ movie }: MovieDetailInfoProps) {
 
       <p>{movie.overview}</p>
 
-      <img src={movie.poster_path ?? ''} alt={movie.title} />
+      <MovieImage
+        path={movie.poster_path}
+        size={IMAGE_SIZES.poster.medium}
+        alt={movie.title}
+      />
     </section>
   );
 }
