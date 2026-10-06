@@ -39,5 +39,6 @@ export const QUERY_KEYS = {
     search: (query: string, page: number) =>
       ['movies', 'search', query, page] as const,
     videos: (id: number) => ['movie', id, 'videos'] as const,
+    credits: (movieId: number) => ['movie', movieId, 'credits'] as const,
   },
 } as const;
