@@ -1,4 +1,4 @@
-import { type MovieCreditsResponse } from '@/types/movie';
+import type { MovieCreditsResponse } from '@/types/movie';
 
 interface MovieCastCrewProps {
   credits: MovieCreditsResponse;
