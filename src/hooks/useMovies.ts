@@ -47,3 +47,11 @@ export const useMovieDetails = (movieId: number | undefined) => {
     enabled: movieId !== undefined,
   });
 };
+
+export const useMovieCredits = (movieId: number | undefined) => {
+  return useQuery({
+    queryKey: QUERY_KEYS.movies.credits(movieId!),
+    queryFn: () => movieService.getMovieCredits(movieId!),
+    enabled: movieId !== undefined,
+  });
+};
