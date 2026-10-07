@@ -55,3 +55,11 @@ export const useMovieCredits = (movieId: number | undefined) => {
     enabled: movieId !== undefined,
   });
 };
+
+export const useMovieReleaseDates = (movieId: number | undefined) => {
+  return useQuery({
+    queryKey: QUERY_KEYS.movies.releaseDates(movieId!),
+    queryFn: () => movieService.getMovieReleaseDates(movieId!),
+    enabled: movieId !== undefined,
+  });
+};
