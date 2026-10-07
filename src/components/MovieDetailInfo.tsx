@@ -1,4 +1,4 @@
-import type { MovieDetail } from '@/types/movie';
+import type { MovieDetail, MovieVideo } from '@/types/movie';
 import MovieImage from './MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 import { CalendarDays, Heart } from 'lucide-react';
@@ -9,12 +9,17 @@ import videoIcon from '@/assets/icons/video.svg';
 import emojiHappyIcon from '@/assets/icons/emoji-happy.svg';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import { getMovieTrailer } from '@/lib/utils';
 
 interface MovieDetailInfoProps {
   movie: MovieDetail;
+  videos: MovieVideo[];
 }
 
-export default function MovieDetailInfo({ movie }: MovieDetailInfoProps) {
+export default function MovieDetailInfo({
+  movie,
+  videos,
+}: MovieDetailInfoProps) {
   const backdropRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
 
@@ -56,6 +61,8 @@ export default function MovieDetailInfo({ movie }: MovieDetailInfoProps) {
 
     return Math.min(0, -(currentScroll - triggerScroll));
   });
+
+  const trailer = getMovieTrailer(videos);
 
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto'>
@@ -111,20 +118,22 @@ export default function MovieDetailInfo({ movie }: MovieDetailInfoProps) {
               </div>
 
               <div className='flex justify-center gap-xl sm:justify-start'>
-                <Button
-                  variant='primary'
-                  className='min-w-55 w-full max-w-100'
-                  asChild
-                >
-                  <a
-                    href={`https://www.youtube.com/}`}
-                    target='_blank'
-                    rel='noopener noreferrer'
+                {trailer && (
+                  <Button
+                    variant='primary'
+                    className='min-w-55 w-full max-w-100'
+                    asChild
                   >
-                    <span>Watch Trailer</span>
-                    <img src={playIcon} alt='' />
-                  </a>
-                </Button>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${trailer.key}`}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <span>Watch Trailer</span>
+                      <img src={playIcon} alt='' />
+                    </a>
+                  </Button>
+                )}
 
                 <button
                   type='button'
