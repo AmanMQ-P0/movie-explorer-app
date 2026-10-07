@@ -14,6 +14,8 @@ import emojiHappyIcon from '@/assets/icons/emoji-happy.svg';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { getMovieTrailer } from '@/lib/utils';
+import MovieDetailSkeleton from './MovieDetailSkeleton';
+import ErrorInitialState from './ErrorInitialState';
 
 interface MovieDetailInfoProps {
   movie?: MovieDetail;
@@ -87,6 +89,23 @@ export default function MovieDetailInfo({
       .flatMap((release) => release.release_dates)
       .find((release) => release.certification)?.certification ??
     'N/A';
+
+  if (isLoading) {
+    return <MovieDetailSkeleton />;
+  }
+
+  if (isError) {
+    return (
+      <ErrorInitialState
+        message='Failed to load movie details.'
+        onRetry={onRetry}
+      />
+    );
+  }
+
+  if (!movie) {
+    return null;
+  }
 
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto'>
