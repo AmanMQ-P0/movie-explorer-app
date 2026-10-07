@@ -3,10 +3,18 @@ import MovieImage from './MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 
 interface MovieCastCrewProps {
-  credits: MovieCreditsResponse;
+  credits?: MovieCreditsResponse;
+  isLoading: boolean;
+  isError: boolean;
+  onRetry: () => Promise<unknown>;
 }
 
-export default function MovieCastCrew({ credits }: MovieCastCrewProps) {
+export default function MovieCastCrew({
+  credits,
+  isLoading,
+  isError,
+  onRetry,
+}: MovieCastCrewProps) {
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto px-xl xl:px-11xl'>
       <div className='border-2 border-blue-600 my-3xl flex flex-col gap-xl lg:gap-3xl lg:mt-5xl lg:mb-7xl'>
