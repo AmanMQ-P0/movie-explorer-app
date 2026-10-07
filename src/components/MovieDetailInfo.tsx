@@ -7,27 +7,73 @@ import playIcon from '@/assets/icons/play-icon.svg';
 import starIcon from '@/assets/icons/star-icon.svg';
 import videoIcon from '@/assets/icons/video.svg';
 import emojiHappyIcon from '@/assets/icons/emoji-happy.svg';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 interface MovieDetailInfoProps {
   movie: MovieDetail;
 }
 
 export default function MovieDetailInfo({ movie }: MovieDetailInfoProps) {
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
+
+  const [triggerScroll, setTriggerScroll] = useState<number | null>(null);
+
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    const calculateTrigger = () => {
+      if (!backdropRef.current || !infoRef.current) return;
+
+      const backdropRect = backdropRef.current.getBoundingClientRect();
+      const infoRect = infoRef.current.getBoundingClientRect();
+
+      const backdropTop = backdropRect.top + window.scrollY;
+
+      const backdropHeight = backdropRect.height;
+
+      const infoTop = infoRect.top + window.scrollY;
+
+      const threshold = backdropTop + backdropHeight * (2 / 3);
+
+      const trigger = infoTop - threshold;
+
+      setTriggerScroll(Math.max(0, trigger));
+    };
+
+    calculateTrigger();
+
+    window.addEventListener('resize', calculateTrigger);
+
+    return () => {
+      window.removeEventListener('resize', calculateTrigger);
+    };
+  }, []);
+
+  const backdropY = useTransform(scrollY, (currentScroll) => {
+    if (triggerScroll === null) return 0;
+
+    return Math.min(0, -(currentScroll - triggerScroll));
+  });
+
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto'>
-      <div className='border relative aspect-video overflow-hidden'>
-        <div className='absolute inset-0'>
-          <MovieImage
-            path={movie.backdrop_path}
-            size={IMAGE_SIZES.backdrop.large}
-            alt={movie.title}
-            className='w-full h-full object-cover object-center'
-          />
-        </div>
+      <motion.div
+        ref={backdropRef}
+        className='aspect-video overflow-hidden sticky top-none -z-10'
+        style={{ y: backdropY }}
+      >
+        <MovieImage
+          path={movie.backdrop_path}
+          size={IMAGE_SIZES.backdrop.large}
+          alt={movie.title}
+          className='w-full h-full object-cover object-center'
+        />
         <div className='absolute inset-none bg-linear-to-t from-base-black via-base-black/45 to-transparent' />
-      </div>
+      </motion.div>
 
-      <div className='px-xl xl:px-11xl'>
+      <div className='px-xl xl:px-11xl' ref={infoRef}>
         <div className='border-2 border-blue-600 flex flex-col gap-3xl'>
           <div className='flex flex-col gap-3xl sm:flex-row'>
             <MovieImage
