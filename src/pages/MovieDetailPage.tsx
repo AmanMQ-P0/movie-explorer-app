@@ -9,6 +9,7 @@ import MovieDetailInfo from '@/components/MovieDetailInfo';
 import MovieCastCrew from '@/components/MovieCastCrew';
 import ErrorInitialState from '@/components/ErrorInitialState';
 import MovieDetailSkeleton from '@/components/MovieDetailSkeleton';
+import MovieCastCrewSkeleton from '@/components/MovieCastCrewSkeleton';
 
 export default function MovieDetailPage() {
   const { movieId } = useParams<{ movieId: string }>();
@@ -46,7 +47,11 @@ export default function MovieDetailPage() {
         releaseDates={movieReleaseDates.data?.results ?? []}
       />
 
-      {movieCredits.data && <MovieCastCrew credits={movieCredits.data} />}
+      {movieCredits.isLoading ? (
+        <MovieCastCrewSkeleton />
+      ) : (
+        movieCredits.data && <MovieCastCrew credits={movieCredits.data} />
+      )}
     </main>
   );
 }
