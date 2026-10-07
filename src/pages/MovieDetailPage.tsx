@@ -49,6 +49,11 @@ export default function MovieDetailPage() {
 
       {movieCredits.isLoading ? (
         <MovieCastCrewSkeleton />
+      ) : movieCredits.isError ? (
+        <ErrorInitialState
+          message='Failed to load cast & crew.'
+          onRetry={movieCredits.refetch}
+        />
       ) : (
         movieCredits.data && <MovieCastCrew credits={movieCredits.data} />
       )}
