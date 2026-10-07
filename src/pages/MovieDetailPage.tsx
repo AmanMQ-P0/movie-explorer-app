@@ -1,7 +1,10 @@
 import { useParams } from 'react-router-dom';
-import { useMovieDetails } from '@/hooks/useMovies';
+import {
+  useMovieDetails,
+  useMovieCredits,
+  useMovieVideos,
+} from '@/hooks/useMovies';
 import MovieDetailInfo from '@/components/MovieDetailInfo';
-import { useMovieCredits } from '@/hooks/useMovies';
 import MovieCastCrew from '@/components/MovieCastCrew';
 
 export default function MovieDetailPage() {
@@ -9,8 +12,8 @@ export default function MovieDetailPage() {
   const idNumber = movieId ? Number(movieId) : undefined;
 
   const movieDetail = useMovieDetails(idNumber);
-
   const movieCredits = useMovieCredits(idNumber);
+  const movieVideos = useMovieVideos(idNumber);
 
   if (!movieDetail.data) {
     return null;
@@ -18,7 +21,10 @@ export default function MovieDetailPage() {
 
   return (
     <main>
-      <MovieDetailInfo movie={movieDetail.data} />
+      <MovieDetailInfo
+        movie={movieDetail.data}
+        videos={movieVideos.data?.results ?? []}
+      />
 
       {movieCredits.data && <MovieCastCrew credits={movieCredits.data} />}
     </main>
