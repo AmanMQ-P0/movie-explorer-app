@@ -8,7 +8,6 @@ import {
 import MovieDetailInfo from '@/components/MovieDetailInfo';
 import MovieCastCrew from '@/components/MovieCastCrew';
 import ErrorInitialState from '@/components/ErrorInitialState';
-import MovieDetailSkeleton from '@/components/MovieDetailSkeleton';
 import MovieCastCrewSkeleton from '@/components/MovieCastCrewSkeleton';
 
 export default function MovieDetailPage() {
@@ -20,31 +19,15 @@ export default function MovieDetailPage() {
   const movieVideos = useMovieVideos(idNumber);
   const movieReleaseDates = useMovieReleaseDates(idNumber);
 
-  if (movieDetail.isLoading) {
-    return <MovieDetailSkeleton />;
-  }
-
-  if (movieDetail.isError) {
-    return (
-      <main>
-        <ErrorInitialState
-          message='Failed to load movie details.'
-          onRetry={movieDetail.refetch}
-        />
-      </main>
-    );
-  }
-
-  if (!movieDetail.data) {
-    return null;
-  }
-
   return (
     <main>
       <MovieDetailInfo
         movie={movieDetail.data}
         videos={movieVideos.data?.results ?? []}
         releaseDates={movieReleaseDates.data?.results ?? []}
+        isLoading={movieDetail.isLoading}
+        isError={movieDetail.isError}
+        onRetry={movieDetail.refetch}
       />
 
       {movieCredits.isLoading ? (
