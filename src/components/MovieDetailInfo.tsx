@@ -76,20 +76,6 @@ export default function MovieDetailInfo({
     return Math.min(0, -(currentScroll - triggerScroll));
   });
 
-  const trailer = getMovieTrailer(videos);
-
-  const ageLimit =
-    releaseDates
-      .find((release) => release.iso_3166_1 === 'ID')
-      ?.release_dates.find((release) => release.certification)?.certification ??
-    releaseDates
-      .find((release) => release.iso_3166_1 === 'US')
-      ?.release_dates.find((release) => release.certification)?.certification ??
-    releaseDates
-      .flatMap((release) => release.release_dates)
-      .find((release) => release.certification)?.certification ??
-    'N/A';
-
   if (isLoading) {
     return <MovieDetailSkeleton />;
   }
@@ -106,6 +92,20 @@ export default function MovieDetailInfo({
   if (!movie) {
     return null;
   }
+
+  const trailer = getMovieTrailer(videos);
+
+  const ageLimit =
+    releaseDates
+      .find((release) => release.iso_3166_1 === 'ID')
+      ?.release_dates.find((release) => release.certification)?.certification ??
+    releaseDates
+      .find((release) => release.iso_3166_1 === 'US')
+      ?.release_dates.find((release) => release.certification)?.certification ??
+    releaseDates
+      .flatMap((release) => release.release_dates)
+      .find((release) => release.certification)?.certification ??
+    'N/A';
 
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto'>
