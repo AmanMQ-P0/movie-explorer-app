@@ -9,6 +9,7 @@ import MovieImage from './MovieImage';
 import { Button } from './ui/button';
 import HeroSkeleton from './HeroSkeleton';
 import ErrorInitialState from './ErrorInitialState';
+import { getMovieTrailer } from '@/lib/utils';
 
 interface HeroProps {
   movies: Movie[];
@@ -39,13 +40,7 @@ export default function HeroSection({
 
   const videos = useMovieVideos(movie?.id);
 
-  const youtubeTrailers =
-    videos.data?.results.filter(
-      (video) => video.site === 'YouTube' && video.type === 'Trailer'
-    ) ?? [];
-
-  const trailer =
-    youtubeTrailers.find((video) => video.official) ?? youtubeTrailers[0];
+  const trailer = getMovieTrailer(videos.data?.results ?? []);
 
   if (isLoading) {
     return <HeroSkeleton />;
