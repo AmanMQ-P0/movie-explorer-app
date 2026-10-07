@@ -16,15 +16,21 @@ import { useEffect, useRef, useState } from 'react';
 import { getMovieTrailer } from '@/lib/utils';
 
 interface MovieDetailInfoProps {
-  movie: MovieDetail;
+  movie?: MovieDetail;
   videos: MovieVideo[];
   releaseDates: MovieReleaseDatesResult[];
+  isLoading: boolean;
+  isError: boolean;
+  onRetry: () => Promise<unknown>;
 }
 
 export default function MovieDetailInfo({
   movie,
   videos,
   releaseDates,
+  isLoading,
+  isError,
+  onRetry,
 }: MovieDetailInfoProps) {
   const backdropRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
