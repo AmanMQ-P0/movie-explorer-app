@@ -70,6 +70,18 @@ export default function MovieDetailInfo({
 
   const trailer = getMovieTrailer(videos);
 
+  const ageLimit =
+    releaseDates
+      .find((release) => release.iso_3166_1 === 'ID')
+      ?.release_dates.find((release) => release.certification)?.certification ??
+    releaseDates
+      .find((release) => release.iso_3166_1 === 'US')
+      ?.release_dates.find((release) => release.certification)?.certification ??
+    releaseDates
+      .flatMap((release) => release.release_dates)
+      .find((release) => release.certification)?.certification ??
+    'N/A';
+
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto'>
       <motion.div
@@ -171,7 +183,7 @@ export default function MovieDetailInfo({
                   <p className='text-xs font-normal lg:text-md text-nowrap'>
                     Age limit
                   </p>
-                  <p className='text-lg font-semibold lg:text-xl'>13</p>
+                  <p className='text-lg font-semibold lg:text-xl'>{ageLimit}</p>
                 </div>
               </div>
             </div>
