@@ -4,6 +4,7 @@ import {
   type MovieVideosResponse,
   type MovieDetail,
   type MovieCreditsResponse,
+  type MovieReleaseDatesResponse,
 } from '@/types/movie';
 
 // TODO: Create service functions to fetch data from TMDB API
@@ -53,6 +54,16 @@ export const movieService = {
   getMovieCredits: async (movieId: number): Promise<MovieCreditsResponse> => {
     const response = await api.get<MovieCreditsResponse>(
       `/movie/${movieId}/credits`
+    );
+
+    return response.data;
+  },
+
+  getMovieReleaseDates: async (
+    movieId: number
+  ): Promise<MovieReleaseDatesResponse> => {
+    const response = await api.get<MovieReleaseDatesResponse>(
+      `/movie/${movieId}/release_dates`
     );
 
     return response.data;
