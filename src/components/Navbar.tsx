@@ -12,14 +12,16 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const trendingNowSection = document.getElementById('trending-now');
+      const navbarScrollTrigger = document.getElementById(
+        'navbar-scroll-trigger'
+      );
 
-      if (!trendingNowSection) return;
+      if (!navbarScrollTrigger) return;
 
-      const trendingNowSectionTop =
-        trendingNowSection.getBoundingClientRect().top;
+      const navbarScrollTriggerSectionTop =
+        navbarScrollTrigger.getBoundingClientRect().top;
 
-      setIsScrolled(trendingNowSectionTop <= 64);
+      setIsScrolled(navbarScrollTriggerSectionTop <= 64);
     };
 
     window.addEventListener('scroll', handleScroll);
