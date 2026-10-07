@@ -73,7 +73,11 @@ export default function MovieDetailInfo({ movie }: MovieDetailInfoProps) {
         <div className='absolute inset-none bg-linear-to-t from-base-black via-base-black/45 to-transparent' />
       </motion.div>
 
-      <div className='px-xl xl:px-11xl' ref={infoRef}>
+      <div
+        id='navbar-scroll-trigger'
+        className='px-xl xl:px-11xl'
+        ref={infoRef}
+      >
         <div className='border-2 border-blue-600 flex flex-col gap-3xl'>
           <div className='flex flex-col gap-3xl sm:flex-row'>
             <MovieImage
