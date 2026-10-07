@@ -78,7 +78,7 @@ export default function MovieDetailInfo({ movie }: MovieDetailInfoProps) {
         className='px-xl xl:px-11xl'
         ref={infoRef}
       >
-        <div className='border-2 border-blue-600 flex flex-col gap-3xl'>
+        <div className='border-2 border-blue-600 flex flex-col gap-3xl mb-4xl'>
           <div className='flex flex-col gap-3xl sm:flex-row'>
             <MovieImage
               path={movie.poster_path}
