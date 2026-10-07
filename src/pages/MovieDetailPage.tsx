@@ -7,6 +7,7 @@ import {
 } from '@/hooks/useMovies';
 import MovieDetailInfo from '@/components/MovieDetailInfo';
 import MovieCastCrew from '@/components/MovieCastCrew';
+import ErrorInitialState from '@/components/ErrorInitialState';
 
 export default function MovieDetailPage() {
   const { movieId } = useParams<{ movieId: string }>();
@@ -16,6 +17,21 @@ export default function MovieDetailPage() {
   const movieCredits = useMovieCredits(idNumber);
   const movieVideos = useMovieVideos(idNumber);
   const movieReleaseDates = useMovieReleaseDates(idNumber);
+
+  if (movieDetail.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (movieDetail.isError) {
+    return (
+      <main>
+        <ErrorInitialState
+          message='Failed to load movie details.'
+          onRetry={movieDetail.refetch}
+        />
+      </main>
+    );
+  }
 
   if (!movieDetail.data) {
     return null;
