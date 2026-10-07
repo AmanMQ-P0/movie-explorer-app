@@ -61,7 +61,7 @@ export default function TrendingNowSection({
   return (
     <section
       aria-busy={isLoading}
-      id='trending-now'
+      id='navbar-scroll-trigger'
       className='max-w-360 mx-auto px-xl pt-5xl relative lg:pb-8xl xl:pt-none xl:pl-11xl xl:pr-none'
     >
       <div className='overflow-hidden flex flex-col gap-3xl xl:gap-5xl'>
