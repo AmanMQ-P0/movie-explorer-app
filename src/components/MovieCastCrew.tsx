@@ -22,6 +22,8 @@ export default function MovieCastCrew({ credits }: MovieCastCrewProps) {
                 className='w-14 h-21 rounded-md lg:w-17 lg:h-27'
               />
 
+              {/* hanya menampilkan 5 data dari cast, adapun data-data cast dan crew yang tersisa tidak ditampilkan ke UI karena menyesuaikan dengan desain figma yang hanya menampilkan 5 cast */}
+
               <div>
                 <h3 className='text-sm font-semibold lg:text-md'>
                   {cast.name}
