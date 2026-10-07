@@ -1,4 +1,8 @@
-import type { MovieDetail, MovieVideo } from '@/types/movie';
+import type {
+  MovieDetail,
+  MovieVideo,
+  MovieReleaseDatesResult,
+} from '@/types/movie';
 import MovieImage from './MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 import { CalendarDays, Heart } from 'lucide-react';
@@ -14,11 +18,13 @@ import { getMovieTrailer } from '@/lib/utils';
 interface MovieDetailInfoProps {
   movie: MovieDetail;
   videos: MovieVideo[];
+  releaseDates: MovieReleaseDatesResult[];
 }
 
 export default function MovieDetailInfo({
   movie,
   videos,
+  releaseDates,
 }: MovieDetailInfoProps) {
   const backdropRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
