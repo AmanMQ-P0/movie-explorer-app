@@ -8,6 +8,7 @@ import {
 import MovieDetailInfo from '@/components/MovieDetailInfo';
 import MovieCastCrew from '@/components/MovieCastCrew';
 import ErrorInitialState from '@/components/ErrorInitialState';
+import MovieDetailSkeleton from '@/components/MovieDetailSkeleton';
 
 export default function MovieDetailPage() {
   const { movieId } = useParams<{ movieId: string }>();
@@ -19,7 +20,7 @@ export default function MovieDetailPage() {
   const movieReleaseDates = useMovieReleaseDates(idNumber);
 
   if (movieDetail.isLoading) {
-    return <div>Loading...</div>;
+    return <MovieDetailSkeleton />;
   }
 
   if (movieDetail.isError) {
