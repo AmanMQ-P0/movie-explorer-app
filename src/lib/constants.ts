@@ -40,5 +40,7 @@ export const QUERY_KEYS = {
       ['movies', 'search', query, page] as const,
     videos: (id: number) => ['movie', id, 'videos'] as const,
     credits: (movieId: number) => ['movie', movieId, 'credits'] as const,
+    releaseDates: (movieId: number) =>
+      ['movie', movieId, 'release-dates'] as const,
   },
 } as const;
