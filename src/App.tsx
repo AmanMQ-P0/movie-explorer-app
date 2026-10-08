@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from '@/pages/HomePage';
 import MovieDetailPage from './pages/MovieDetailPage';
 import Layout from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   // TODO: Setup routing dengan React Router
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route path='/' element={<HomePage />} />
