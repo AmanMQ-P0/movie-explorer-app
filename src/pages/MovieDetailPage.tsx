@@ -7,8 +7,8 @@ import {
 } from '@/hooks/useMovies';
 import MovieDetailInfo from '@/components/MovieDetailInfo';
 import MovieCastCrew from '@/components/MovieCastCrew';
-import ErrorInitialState from '@/components/ErrorInitialState';
-import MovieCastCrewSkeleton from '@/components/MovieCastCrewSkeleton';
+// import ErrorInitialState from '@/components/ErrorInitialState';
+// import MovieCastCrewSkeleton from '@/components/MovieCastCrewSkeleton';
 
 export default function MovieDetailPage() {
   const { movieId } = useParams<{ movieId: string }>();
@@ -30,16 +30,12 @@ export default function MovieDetailPage() {
         onRetry={movieDetail.refetch}
       />
 
-      {movieCredits.isLoading ? (
-        <MovieCastCrewSkeleton />
-      ) : movieCredits.isError ? (
-        <ErrorInitialState
-          message='Failed to load cast & crew.'
-          onRetry={movieCredits.refetch}
-        />
-      ) : (
-        movieCredits.data && <MovieCastCrew credits={movieCredits.data} />
-      )}
+      <MovieCastCrew
+        credits={movieCredits.data}
+        isLoading={movieCredits.isLoading}
+        isError={movieCredits.isError}
+        onRetry={movieCredits.refetch}
+      />
     </main>
   );
 }
