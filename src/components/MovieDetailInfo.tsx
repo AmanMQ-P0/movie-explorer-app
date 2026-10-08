@@ -5,7 +5,7 @@ import type {
 } from '@/types/movie';
 import MovieImage from './MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
-import { CalendarDays, Heart } from 'lucide-react';
+import { CalendarDays } from 'lucide-react';
 import { Button } from './ui/button';
 import playIcon from '@/assets/icons/play-icon.svg';
 import starIcon from '@/assets/icons/star-icon.svg';
@@ -16,6 +16,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getMovieTrailer } from '@/lib/utils';
 import MovieDetailSkeleton from './MovieDetailSkeleton';
 import ErrorInitialState from './ErrorInitialState';
+import FavoriteButton from './FavoriteButton';
 
 interface MovieDetailInfoProps {
   movie?: MovieDetail;
@@ -165,14 +166,7 @@ export default function MovieDetailInfo({
                     </p>
                   </div>
 
-                  {!trailer && (
-                    <button
-                      type='button'
-                      className='w-11 h-11 bg-base-black/60 border border-neutral-900 flex justify-center items-center rounded-full lg:w-13 lg:h-13'
-                    >
-                      <Heart />
-                    </button>
-                  )}
+                  {!trailer && <FavoriteButton movie={movie} />}
                 </div>
               </div>
 
@@ -194,14 +188,7 @@ export default function MovieDetailInfo({
                   </Button>
                 )}
 
-                {trailer && (
-                  <button
-                    type='button'
-                    className='w-11 h-11 bg-base-black/60 border border-neutral-900 flex justify-center items-center rounded-full lg:w-13 lg:h-13'
-                  >
-                    <Heart />
-                  </button>
-                )}
+                {trailer && <FavoriteButton movie={movie} />}
               </div>
 
               <div className='flex gap-lg justify-center lg:gap-2xl'>
