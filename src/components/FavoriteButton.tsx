@@ -2,6 +2,7 @@ import type { Movie } from '@/types/movie';
 import { useMovieStore } from '@/store/movieStore';
 import { Heart } from 'lucide-react';
 import heartIcon from '@/assets/icons/heart.svg';
+import { useToast } from '@/context/useToast';
 
 interface FavoriteButtonProps {
   movie: Movie;
@@ -12,6 +13,8 @@ export default function FavoriteButton({
   movie,
   onFavoriteChange,
 }: FavoriteButtonProps) {
+  const { showToast } = useToast();
+
   const isFavorite = useMovieStore((state) => state.isFavorite(movie.id));
 
   const addToFavorites = useMovieStore((state) => state.addToFavorites);
@@ -24,9 +27,11 @@ export default function FavoriteButton({
     if (isFavorite) {
       removeFromFavorites(movie.id);
       onFavoriteChange?.('removed');
+      showToast('Success Remove from Favorites');
     } else {
       addToFavorites(movie);
       onFavoriteChange?.('added');
+      showToast('Success Add to Favorites');
     }
   };
 
