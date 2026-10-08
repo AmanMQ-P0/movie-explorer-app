@@ -35,8 +35,8 @@ export default function MovieCastCrew({
   }
 
   return (
-    <section className='border-2 border-amber-400 max-w-360 mx-auto px-xl xl:px-11xl'>
-      <div className='border-2 border-blue-600 my-3xl flex flex-col gap-xl lg:gap-3xl lg:mt-5xl lg:mb-7xl'>
+    <section className='max-w-360 mx-auto px-xl xl:px-11xl'>
+      <div className='my-3xl flex flex-col gap-xl lg:gap-3xl lg:mt-5xl lg:mb-7xl'>
         <h2 className='text-xl font-bold lg:text-display-md'>Cast & Crew</h2>
 
         <div className='grid grid-cols-1 gap-lg sm:grid-cols-2 sm:gap-3xl lg:grid-cols-3'>
