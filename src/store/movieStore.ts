@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-// import { Movie } from '@/types/movie';
+import type { Movie } from '@/types/movie';
 
 // TODO: Define your store state interface
 interface MovieStore {
@@ -8,6 +8,10 @@ interface MovieStore {
 
   // TODO: Add action methods
   // Examples: addToFavorites, removeFromFavorites, etc.
+  favorites: Movie[];
+  addToFavorites: (movie: Movie) => void;
+  removeFromFavorites: (movieId: number) => void;
+  isFavorite: (movieId: number) => boolean;
 }
 
 // TODO: Create Zustand store
