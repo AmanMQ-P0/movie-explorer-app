@@ -5,9 +5,13 @@ import heartIcon from '@/assets/icons/heart.svg';
 
 interface FavoriteButtonProps {
   movie: Movie;
+  onFavoriteChange?: (action: 'added' | 'removed') => void;
 }
 
-export default function FavoriteButton({ movie }: FavoriteButtonProps) {
+export default function FavoriteButton({
+  movie,
+  onFavoriteChange,
+}: FavoriteButtonProps) {
   const isFavorite = useMovieStore((state) => state.isFavorite(movie.id));
 
   const addToFavorites = useMovieStore((state) => state.addToFavorites);
@@ -19,8 +23,10 @@ export default function FavoriteButton({ movie }: FavoriteButtonProps) {
   const handleToggle = () => {
     if (isFavorite) {
       removeFromFavorites(movie.id);
+      onFavoriteChange?.('removed');
     } else {
       addToFavorites(movie);
+      onFavoriteChange?.('added');
     }
   };
 
