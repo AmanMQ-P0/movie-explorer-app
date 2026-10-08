@@ -115,7 +115,7 @@ export default function MovieDetailInfo({
     'N/A';
 
   return (
-    <section className='border-2 border-amber-400 max-w-360 mx-auto'>
+    <section className='max-w-360 mx-auto'>
       <motion.div
         ref={backdropRef}
         className='aspect-video overflow-hidden sticky top-none -z-10'
@@ -135,7 +135,7 @@ export default function MovieDetailInfo({
         className='px-xl xl:px-11xl'
         ref={infoRef}
       >
-        <div className='border-2 border-blue-600 flex flex-col gap-3xl mb-4xl'>
+        <div className='flex flex-col gap-3xl mb-4xl'>
           <div className='flex flex-col gap-3xl sm:flex-row'>
             <MovieImage
               path={movie.poster_path}
