@@ -2,7 +2,7 @@ import { Skeleton } from './ui/skeleton';
 
 export default function MovieDetailSkeleton() {
   return (
-    <section className='border-2 border-amber-400 max-w-360 mx-auto px-xl xl:px-11xl'>
+    <section className='max-w-360 mx-auto px-xl xl:px-11xl'>
       {/* Backdrop */}
       <div className='aspect-video'>
         <Skeleton className='bg-neutral-900 h-full w-full rounded-none' />
@@ -10,7 +10,7 @@ export default function MovieDetailSkeleton() {
 
       {/* Movie information */}
       <div className='mt-xl'>
-        <div className='border-2 border-amber-400 flex flex-col gap-xl sm:flex-row'>
+        <div className='flex flex-col gap-xl sm:flex-row'>
           {/* Poster */}
           <Skeleton className='bg-neutral-900 w-60 h-65 rounded-xl hidden sm:block lg:w-70 lg:h-75 xl:w-80 xl:h-90' />
 
@@ -41,7 +41,7 @@ export default function MovieDetailSkeleton() {
         </div>
 
         {/* Overview */}
-        <div className='border-2 border-amber-400 mt-3xl flex flex-col gap-xl'>
+        <div className='mt-3xl flex flex-col gap-xl'>
           <Skeleton className='bg-neutral-900 h-12 w-60' />
           <div className='flex flex-col gap-md'>
             <Skeleton className='bg-neutral-900 h-6 w-full' />
