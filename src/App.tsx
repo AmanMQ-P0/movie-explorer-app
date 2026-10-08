@@ -4,6 +4,8 @@ import HomePage from '@/pages/HomePage';
 import MovieDetailPage from './pages/MovieDetailPage';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
+import { ToastProvider } from '@/context/ToastProvider';
+import Toast from '@/components/Toast';
 
 function App() {
   // TODO: Setup routing dengan React Router
@@ -12,13 +14,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/movie/:movieId' element={<MovieDetailPage />} />
-        </Route>
-      </Routes>
+      <ToastProvider>
+        <ScrollToTop />
+        <Toast />
+
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/movie/:movieId' element={<MovieDetailPage />} />
+          </Route>
+        </Routes>
+      </ToastProvider>
     </BrowserRouter>
   );
 }
