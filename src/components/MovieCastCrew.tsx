@@ -1,6 +1,8 @@
 import type { MovieCreditsResponse } from '@/types/movie';
 import MovieImage from './MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
+import MovieCastCrewSkeleton from './MovieCastCrewSkeleton';
+import ErrorInitialState from './ErrorInitialState';
 
 interface MovieCastCrewProps {
   credits?: MovieCreditsResponse;
@@ -15,6 +17,23 @@ export default function MovieCastCrew({
   isError,
   onRetry,
 }: MovieCastCrewProps) {
+  if (isLoading) {
+    return <MovieCastCrewSkeleton />;
+  }
+
+  if (isError) {
+    return (
+      <ErrorInitialState
+        message='Failed to load cast & crew.'
+        onRetry={onRetry}
+      />
+    );
+  }
+
+  if (!credits) {
+    return null;
+  }
+
   return (
     <section className='border-2 border-amber-400 max-w-360 mx-auto px-xl xl:px-11xl'>
       <div className='border-2 border-blue-600 my-3xl flex flex-col gap-xl lg:gap-3xl lg:mt-5xl lg:mb-7xl'>
