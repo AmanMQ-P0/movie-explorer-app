@@ -95,6 +95,11 @@ export default function MovieDetailInfo({
     return null;
   }
 
+  // Trailer dan age limit merupakan data pelengkap.
+  // Kegagalan videos tidak mengganggu movie detail; jika trailer tidak tersedia,
+  // tombol Watch Trailer tidak ditampilkan. Kegagalan release dates menggunakan
+  // fallback 'N/A' untuk age limit. Keduanya tidak memerlukan error state khusus.
+
   const trailer = getMovieTrailer(videos);
 
   const ageLimit =
@@ -159,6 +164,15 @@ export default function MovieDetailInfo({
                       {movie.release_date}
                     </p>
                   </div>
+
+                  {!trailer && (
+                    <button
+                      type='button'
+                      className='w-11 h-11 bg-base-black/60 border border-neutral-900 flex justify-center items-center rounded-full lg:w-13 lg:h-13'
+                    >
+                      <Heart />
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -180,12 +194,14 @@ export default function MovieDetailInfo({
                   </Button>
                 )}
 
-                <button
-                  type='button'
-                  className='w-11 h-11 bg-base-black/60 border border-neutral-900 flex justify-center items-center rounded-full lg:w-13 lg:h-13'
-                >
-                  <Heart />
-                </button>
+                {trailer && (
+                  <button
+                    type='button'
+                    className='w-11 h-11 bg-base-black/60 border border-neutral-900 flex justify-center items-center rounded-full lg:w-13 lg:h-13'
+                  >
+                    <Heart />
+                  </button>
+                )}
               </div>
 
               <div className='flex gap-lg justify-center lg:gap-2xl'>
