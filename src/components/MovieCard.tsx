@@ -11,7 +11,10 @@ interface MovieCardProps {
 
 export default function MovieCard({ movie, rank }: MovieCardProps) {
   return (
-    <Link to={`/movie/${movie.id}`}>
+    <Link
+      to={`/movie/${movie.id}`}
+      className='group transition-transform duration-300 hover:scale-[1.03]'
+    >
       <article className='flex flex-col w-full h-full relative'>
         <MovieImage
           path={movie.poster_path}
@@ -37,6 +40,8 @@ export default function MovieCard({ movie, rank }: MovieCardProps) {
             {rank}
           </span>
         )}
+
+        <div className='absolute inset-0 group-hover:bg-base-black/40 transition-colors duration-300' />
       </article>
     </Link>
   );
