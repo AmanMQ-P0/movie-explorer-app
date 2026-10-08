@@ -42,6 +42,8 @@ export default function MovieDetailInfo({
   const { scrollY } = useScroll();
 
   useEffect(() => {
+    if (isLoading) return;
+
     const calculateTrigger = () => {
       if (!backdropRef.current || !infoRef.current) return;
 
@@ -68,7 +70,7 @@ export default function MovieDetailInfo({
     return () => {
       window.removeEventListener('resize', calculateTrigger);
     };
-  }, []);
+  }, [isLoading]);
 
   const backdropY = useTransform(scrollY, (currentScroll) => {
     if (triggerScroll === null) return 0;
