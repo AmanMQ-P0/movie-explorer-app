@@ -17,6 +17,28 @@ interface MovieStore {
 // TODO: Create Zustand store
 // Reference: https://zustand.docs.pmnd.rs/getting-started/introduction
 
-export const useMovieStore = create<MovieStore>((set) => ({
+export const useMovieStore = create<MovieStore>((set, get) => ({
   // TODO: Initialize state and implement actions
+  favorites: [],
+
+  addToFavorites: (movie) =>
+    set((state) => {
+      const currentMovie = state.favorites.some(
+        (favorite) => favorite.id === movie.id
+      );
+
+      if (currentMovie) return state;
+
+      return {
+        favorites: [...state.favorites, movie],
+      };
+    }),
+
+  removeFromFavorites: (movieId) =>
+    set((state) => ({
+      favorites: state.favorites.filter((favorite) => favorite.id !== movieId),
+    })),
+
+  isFavorite: (movieId) =>
+    get().favorites.some((favorite) => favorite.id === movieId),
 }));
