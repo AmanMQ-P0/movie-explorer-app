@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
 import { ToastProvider } from '@/context/ToastProvider';
 import Toast from '@/components/Toast';
+import FavoritesPage from './pages/FavoritesPage';
 
 function App() {
   // TODO: Setup routing dengan React Router
@@ -22,6 +23,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path='/' element={<HomePage />} />
             <Route path='/movie/:movieId' element={<MovieDetailPage />} />
+            <Route path='/favorites' element={<FavoritesPage />} />
           </Route>
         </Routes>
       </ToastProvider>
