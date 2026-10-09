@@ -1,18 +1,20 @@
 import { useMovieStore } from '@/store/movieStore';
+import FavoriteMovies from '@/components/favorites/FavoriteMovies';
 
 export default function FavoritesPage() {
   const favorites = useMovieStore((state) => state.favorites);
 
   return (
-    <section className='mt-30'>
-      <h1>Favorites</h1>
-      {favorites.length === 0
-        ? 'daftar favorites kosong'
-        : favorites.map((favorite) => (
-            <div key={favorite.id}>
-              <h2>{favorite.title}</h2>
-            </div>
-          ))}
-    </section>
+    <main className='border-2 border-amber-400'>
+      <div className='border-2 border-blue-600'>
+        <h1>Favorites</h1>
+
+        {favorites.length === 0 ? (
+          'daftar favorites kosong'
+        ) : (
+          <FavoriteMovies movies={favorites} />
+        )}
+      </div>
+    </main>
   );
 }
