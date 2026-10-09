@@ -6,8 +6,6 @@ import type {
 import MovieImage from './MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 import { CalendarDays } from 'lucide-react';
-import { Button } from './ui/button';
-import playIcon from '@/assets/icons/play-icon.svg';
 import starIcon from '@/assets/icons/star-icon.svg';
 import videoIcon from '@/assets/icons/video.svg';
 import emojiHappyIcon from '@/assets/icons/emoji-happy.svg';
@@ -17,6 +15,7 @@ import { getMovieTrailer } from '@/lib/utils';
 import MovieDetailSkeleton from './MovieDetailSkeleton';
 import ErrorInitialState from './ErrorInitialState';
 import FavoriteButton from './FavoriteButton';
+import WatchTrailer from './WatchTrailer';
 
 interface MovieDetailInfoProps {
   movie?: MovieDetail;
@@ -172,23 +171,17 @@ export default function MovieDetailInfo({
 
               <div className='flex justify-center gap-xl sm:justify-start'>
                 {trailer && (
-                  <Button
-                    variant='primary'
+                  <WatchTrailer
+                    trailer={trailer}
                     className='min-w-55 w-full max-w-100'
-                    asChild
-                  >
-                    <a
-                      href={`https://www.youtube.com/watch?v=${trailer.key}`}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      <span>Watch Trailer</span>
-                      <img src={playIcon} alt='' />
-                    </a>
-                  </Button>
+                  />
                 )}
 
-                {trailer && <FavoriteButton movie={movie} />}
+                {trailer && (
+                  <div>
+                    <FavoriteButton movie={movie} />
+                  </div>
+                )}
               </div>
 
               <div className='flex gap-lg justify-center lg:gap-2xl'>
