@@ -1,5 +1,6 @@
 import { useMovieStore } from '@/store/movieStore';
 import FavoriteMovies from '@/components/favorites/FavoriteMovies';
+import EmptyFavorites from '@/components/favorites/EmptyFavorites';
 
 export default function FavoritesPage() {
   const favorites = useMovieStore((state) => state.favorites);
@@ -10,7 +11,7 @@ export default function FavoritesPage() {
         <h1>Favorites</h1>
 
         {favorites.length === 0 ? (
-          'daftar favorites kosong'
+          <EmptyFavorites />
         ) : (
           <FavoriteMovies movies={favorites} />
         )}
