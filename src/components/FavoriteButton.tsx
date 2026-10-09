@@ -6,12 +6,10 @@ import { useToast } from '@/context/useToast';
 
 interface FavoriteButtonProps {
   movie: Movie;
-  onFavoriteChange?: (action: 'added' | 'removed') => void;
 }
 
 export default function FavoriteButton({
   movie,
-  onFavoriteChange,
 }: FavoriteButtonProps) {
   const { showToast } = useToast();
 
@@ -26,11 +24,9 @@ export default function FavoriteButton({
   const handleToggle = () => {
     if (isFavorite) {
       removeFromFavorites(movie.id);
-      onFavoriteChange?.('removed');
       showToast('Success Remove from Favorites');
     } else {
       addToFavorites(movie);
-      onFavoriteChange?.('added');
       showToast('Success Add to Favorites');
     }
   };
