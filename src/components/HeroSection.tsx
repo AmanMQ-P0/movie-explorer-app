@@ -2,7 +2,6 @@ import { IMAGE_SIZES } from '@/lib/constants';
 import { useMovieVideos } from '@/hooks/useMovies';
 import type { Movie } from '@/types/movie';
 import { Link } from 'react-router-dom';
-import playIcon from '@/assets/icons/play-icon.svg';
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import MovieImage from './MovieImage';
@@ -10,6 +9,7 @@ import { Button } from './ui/button';
 import HeroSkeleton from './HeroSkeleton';
 import ErrorInitialState from './ErrorInitialState';
 import { getMovieTrailer } from '@/lib/utils';
+import WatchTrailer from './WatchTrailer';
 
 interface HeroProps {
   movies: Movie[];
@@ -99,18 +99,7 @@ export default function HeroSection({
             </div>
 
             <div className='flex flex-col gap-xl sm:flex-row sm:justify-center sm:items-center md:justify-start'>
-              {trailer && (
-                <Button variant='primary' asChild>
-                  <a
-                    href={`https://www.youtube.com/watch?v=${trailer.key}`}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <span>Watch Trailer</span>
-                    <img src={playIcon} alt='' />
-                  </a>
-                </Button>
-              )}
+              {trailer && <WatchTrailer trailer={trailer} />}
 
               <Button asChild variant='secondary'>
                 <Link to={`/movie/${movie.id}`}>
