@@ -6,9 +6,14 @@ export default function FavoritesPage() {
   const favorites = useMovieStore((state) => state.favorites);
 
   return (
-    <main className='border-2 border-amber-400'>
+    <main
+      id='navbar-scroll-trigger'
+      className='border-2 border-amber-400 max-w-360 mx-auto mt-8xl px-xl xl:px-11xl'
+    >
       <div className='border-2 border-blue-600'>
-        <h1>Favorites</h1>
+        <h1 className='text-display-xs font-bold lg:text-display-lg'>
+          Favorites
+        </h1>
 
         {favorites.length === 0 ? (
           <EmptyFavorites />
