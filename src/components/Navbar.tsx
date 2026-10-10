@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Logo } from './Logo';
+import removeIcon from '@/assets/icons/close.svg';
 
 export default function Navbar() {
   const location = useLocation();
@@ -98,19 +99,37 @@ export default function Navbar() {
         </div>
 
         <div className='flex items-center gap-3xl'>
-          <Link
-            to='/search'
-            aria-label='Search movies'
-            className='flex justify-center items-center md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:gap-md md:w-60 md:justify-start group md:hover:bg-base-black/60 md:hover:border-neutral-400 transition-colors duration-300 ease-in-out'
-          >
-            <Search
-              aria-hidden='true'
-              className='hover:text-neutral-400 md:text-neutral-500 md:group-hover:text-neutral-25 transition-colors duration-300 ease-in-out'
-            />
-            <span className='hidden md:block text-md font-normal text-neutral-500 group-hover:text-neutral-25 transition-colors duration-300 ease-in-out'>
-              Search Movie
-            </span>
-          </Link>
+          {isSearchPage ? (
+            <div className='flex items-center gap-md md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:w-60'>
+              <Search aria-hidden='true' className='text-neutral-500' />
+
+              <input
+                ref={searchInputRef}
+                type='text'
+                placeholder='Search Movie'
+                aria-label='Search movies'
+                className='min-w-0 w-full bg-transparent text-md outline-none placeholder:text-neutral-500'
+              />
+
+              <Button type='button'>
+                <img src={removeIcon} alt='' />
+              </Button>
+            </div>
+          ) : (
+            <Link
+              to='/search'
+              aria-label='Search movies'
+              className='flex justify-center items-center md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:gap-md md:w-60 md:justify-start group md:hover:bg-base-black/60 md:hover:border-neutral-400 transition-colors duration-300 ease-in-out'
+            >
+              <Search
+                aria-hidden='true'
+                className='hover:text-neutral-400 md:text-neutral-500 md:group-hover:text-neutral-25 transition-colors duration-300 ease-in-out'
+              />
+              <span className='hidden md:block text-md font-normal text-neutral-500 group-hover:text-neutral-25 transition-colors duration-300 ease-in-out'>
+                Search Movie
+              </span>
+            </Link>
+          )}
 
           <Button
             type='button'
