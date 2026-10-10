@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { Movie } from '@/types/movie';
 import { persist } from 'zustand/middleware';
+import { STORAGE_KEYS } from '@/lib/constants';
 
 // TODO: Define your store state interface
 interface MovieStore {
@@ -48,7 +49,7 @@ export const useMovieStore = create<MovieStore>()(
         get().favorites.some((favorite) => favorite.id === movieId),
     }),
     {
-      name: 'movie-favorites',
+      name: STORAGE_KEYS.favorites,
       partialize: (state) => ({
         favorites: state.favorites,
       }),
