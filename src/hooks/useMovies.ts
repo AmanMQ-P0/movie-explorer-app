@@ -63,3 +63,19 @@ export const useMovieReleaseDates = (movieId: number | undefined) => {
     enabled: movieId !== undefined,
   });
 };
+
+export const useSearchMovies = (query: string) => {
+  return useInfiniteQuery({
+    queryKey: QUERY_KEYS.movies.search(query),
+    queryFn: ({ pageParam }) => movieService.searchMovies(query, pageParam),
+    initialPageParam: 1,
+    enabled: query.trim().length > 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.page >= lastPage.total_pages) {
+        return undefined;
+      }
+
+      return lastPage.page + 1;
+    },
+  });
+};
