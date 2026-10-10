@@ -71,6 +71,17 @@ export const movieService = {
 
   // TODO: Implement searchMovies function
   // Endpoint: GET /search/movie
+  searchMovies: async (query: string, page: number): Promise<MovieResponse> => {
+    const response = await api.get<MovieResponse>('/search/movie', {
+      params: {
+        query,
+        page,
+        include_adult: false,
+      },
+    });
+
+    return response.data;
+  },
 
   // TODO: Add more endpoints as needed
 };
