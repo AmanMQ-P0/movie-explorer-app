@@ -13,6 +13,7 @@ export default function Navbar() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,14 +107,25 @@ export default function Navbar() {
               <input
                 ref={searchInputRef}
                 type='text'
+                value={searchValue}
+                onChange={(event) => setSearchValue(event.target.value)}
                 placeholder='Search Movie'
                 aria-label='Search movies'
                 className='min-w-0 w-full bg-transparent text-md outline-none placeholder:text-neutral-500'
               />
 
-              <Button type='button'>
-                <img src={removeIcon} alt='' />
-              </Button>
+              {searchValue && (
+                <Button
+                  type='button'
+                  aria-label='Clear search'
+                  onClick={() => {
+                    setSearchValue('');
+                    searchInputRef.current?.focus();
+                  }}
+                >
+                  <img src={removeIcon} alt='' />
+                </Button>
+              )}
             </div>
           ) : (
             <Link
