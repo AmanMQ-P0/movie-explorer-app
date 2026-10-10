@@ -6,6 +6,7 @@ import type { Movie } from '@/types/movie';
 import { useMovieVideos } from '@/hooks/useMovies';
 import { getMovieTrailer } from '@/lib/utils';
 import WatchTrailer from '@/components/WatchTrailer';
+import { Button } from '../ui/button';
 
 interface FavoriteMovieItemProps {
   movie: Movie;
@@ -50,8 +51,12 @@ export default function FavoriteMovieItem({ movie }: FavoriteMovieItemProps) {
         </div>
 
         <div className='flex items-center gap-xl sm:justify-center sm:items-center md:justify-start'>
-          {trailer && (
+          {trailer ? (
             <WatchTrailer trailer={trailer} className='min-w-55 w-full' />
+          ) : (
+            <Button type='button' variant='primary' className='min-w-55 w-full'>
+              <span>No Trailer</span>
+            </Button>
           )}
 
           <div className='md:absolute md:top-none right-none'>
