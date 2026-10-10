@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { Movie } from '@/types/movie';
+import { persist } from 'zustand/middleware';
 
 // TODO: Define your store state interface
 interface MovieStore {
@@ -17,28 +18,40 @@ interface MovieStore {
 // TODO: Create Zustand store
 // Reference: https://zustand.docs.pmnd.rs/getting-started/introduction
 
-export const useMovieStore = create<MovieStore>((set, get) => ({
-  // TODO: Initialize state and implement actions
-  favorites: [],
+export const useMovieStore = create<MovieStore>()(
+  persist(
+    (set, get) => ({
+      // TODO: Initialize state and implement actions
+      favorites: [],
 
-  addToFavorites: (movie) =>
-    set((state) => {
-      const currentMovie = state.favorites.some(
-        (favorite) => favorite.id === movie.id
-      );
+      addToFavorites: (movie) =>
+        set((state) => {
+          const currentMovie = state.favorites.some(
+            (favorite) => favorite.id === movie.id
+          );
 
-      if (currentMovie) return state;
+          if (currentMovie) return state;
 
-      return {
-        favorites: [...state.favorites, movie],
-      };
+          return {
+            favorites: [...state.favorites, movie],
+          };
+        }),
+
+      removeFromFavorites: (movieId) =>
+        set((state) => ({
+          favorites: state.favorites.filter(
+            (favorite) => favorite.id !== movieId
+          ),
+        })),
+
+      isFavorite: (movieId) =>
+        get().favorites.some((favorite) => favorite.id === movieId),
     }),
-
-  removeFromFavorites: (movieId) =>
-    set((state) => ({
-      favorites: state.favorites.filter((favorite) => favorite.id !== movieId),
-    })),
-
-  isFavorite: (movieId) =>
-    get().favorites.some((favorite) => favorite.id === movieId),
-}));
+    {
+      name: 'movie-favorites',
+      partialize: (state) => ({
+        favorites: state.favorites,
+      }),
+    }
+  )
+);
