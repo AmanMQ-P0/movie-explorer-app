@@ -1,19 +1,17 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Search, AlignJustify, X } from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Logo } from './Logo';
-import removeIcon from '@/assets/icons/close.svg';
+import SearchInput from '@/components/search/SearchInput';
 
 export default function Navbar() {
   const location = useLocation();
   const isSearchPage = location.pathname === '/search';
-  const searchInputRef = useRef<HTMLInputElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,12 +63,6 @@ export default function Navbar() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!isSearchPage) return;
-
-    searchInputRef.current?.focus();
-  }, [isSearchPage]);
-
   return (
     <header
       className={`max-w-360 mx-auto h-16 flex items-center px-xl fixed inset-x-none top-none z-100 lg:h-22.5 xl:px-11xl ${
@@ -103,29 +95,7 @@ export default function Navbar() {
           {isSearchPage ? (
             <div className='flex items-center gap-md md:py-md md:px-xl md:border md:border-neutral-800 md:rounded-2xl md:w-60'>
               <Search aria-hidden='true' className='text-neutral-500' />
-
-              <input
-                ref={searchInputRef}
-                type='text'
-                value={searchValue}
-                onChange={(event) => setSearchValue(event.target.value)}
-                placeholder='Search Movie'
-                aria-label='Search movies'
-                className='min-w-0 w-full bg-transparent text-md outline-none placeholder:text-neutral-500'
-              />
-
-              {searchValue && (
-                <Button
-                  type='button'
-                  aria-label='Clear search'
-                  onClick={() => {
-                    setSearchValue('');
-                    searchInputRef.current?.focus();
-                  }}
-                >
-                  <img src={removeIcon} alt='' />
-                </Button>
-              )}
+              <SearchInput />
             </div>
           ) : (
             <Link
