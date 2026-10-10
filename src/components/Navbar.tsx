@@ -63,6 +63,12 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isSearchPage) return;
+
+    searchInputRef.current?.focus();
+  }, [isSearchPage]);
+
   return (
     <header
       className={`max-w-360 mx-auto h-16 flex items-center px-xl fixed inset-x-none top-none z-100 lg:h-22.5 xl:px-11xl ${
