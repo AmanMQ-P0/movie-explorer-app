@@ -7,6 +7,9 @@ import { Button } from './ui/button';
 import { Logo } from './Logo';
 
 export default function Navbar() {
+  const location = useLocation();
+  const isSearchPage = location.pathname === '/search';
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
