@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import MovieImage from '../common/MovieImage';
 import { Button } from '../ui/button';
-import HeroSkeleton from '../HeroSkeleton';
+import HeroSkeleton from './HeroSkeleton';
 import ErrorInitialState from '../ErrorInitialState';
 import { getMovieTrailer } from '@/lib/utils';
 import WatchTrailer from '../common/WatchTrailer';
