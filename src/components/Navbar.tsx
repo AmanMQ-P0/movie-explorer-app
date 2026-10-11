@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Logo } from './Logo';
 import SearchInput from '@/components/search/SearchInput';
+import MobileSearchHeader from './MobileSearchHeader';
 
 export default function Navbar() {
   const location = useLocation();
@@ -69,7 +70,11 @@ export default function Navbar() {
         isScrolled ? 'bg-base-black/60 backdrop-blur-md' : 'bg-transparent'
       } transition-[background-color,backdrop-filter] duration-300 ease-in-out`}
     >
-      <nav className='flex justify-between items-center w-full'>
+      {isSearchPage && <MobileSearchHeader />}
+
+      <nav
+        className={`flex justify-between items-center w-full ${isSearchPage ? 'hidden md:flex' : ''}`}
+      >
         <div className='flex items-center gap-8xl'>
           <Link to='/' aria-label='Movie Explorer home'>
             <Logo />
