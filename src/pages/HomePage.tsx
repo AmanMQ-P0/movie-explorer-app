@@ -1,7 +1,7 @@
 import { useNowPlayingMovies, usePopularMovies } from '@/hooks/useMovies';
 import HeroSection from '@/components/home/HeroSection';
 import TrendingNowSection from '@/components/TrendingNowSection';
-import NewReleaseSection from '@/components/NewReleaseSection';
+import NewReleaseSection from '@/components/home/NewReleaseSection';
 
 export default function HomePage() {
   const popularMovies = usePopularMovies(1);
