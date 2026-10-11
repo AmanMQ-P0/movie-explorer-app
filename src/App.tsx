@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from '@/pages/HomePage';
 import MovieDetailPage from './pages/MovieDetailPage';
 import Layout from './components/common/Layout';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './components/common/ScrollToTop';
 import { ToastProvider } from '@/context/ToastProvider';
 import Toast from '@/components/Toast';
 import FavoritesPage from './pages/FavoritesPage';
