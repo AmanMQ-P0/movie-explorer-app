@@ -4,6 +4,10 @@ import SearchResults from '@/components/search/SearchResults';
 import SearchNotFound from '@/components/search/SearchNotFound';
 import SearchEmptyState from '@/components/search/SearchEmptyState';
 
+// Pencarian film menggunakan useInfiniteQuery dengan maksimal 20 hasil per halaman.
+// Hasil dari halaman berikutnya belum ditampilkan karena desain Figma
+// belum menyediakan komponen Load More atau pagination.
+
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
 
