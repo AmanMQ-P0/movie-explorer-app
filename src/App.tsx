@@ -5,7 +5,7 @@ import MovieDetailPage from './pages/MovieDetailPage';
 import Layout from './components/common/Layout';
 import ScrollToTop from './components/common/ScrollToTop';
 import { ToastProvider } from '@/context/ToastProvider';
-import Toast from '@/components/Toast';
+import Toast from '@/components/common/Toast';
 import FavoritesPage from './pages/FavoritesPage';
 import SearchPage from './pages/SearchPage';
 
