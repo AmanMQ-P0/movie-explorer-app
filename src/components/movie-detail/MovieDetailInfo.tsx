@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getMovieTrailer } from '@/lib/utils';
 import MovieDetailSkeleton from './MovieDetailSkeleton';
 import ErrorInitialState from '../common/ErrorInitialState';
-import FavoriteButton from '../FavoriteButton';
+import FavoriteButton from '../common/FavoriteButton';
 import WatchTrailer from '../common/WatchTrailer';
 
 interface MovieDetailInfoProps {

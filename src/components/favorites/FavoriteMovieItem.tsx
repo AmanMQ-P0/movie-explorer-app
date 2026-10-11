@@ -1,4 +1,4 @@
-import FavoriteButton from '@/components/FavoriteButton';
+import FavoriteButton from '@/components/common/FavoriteButton';
 import MovieImage from '../common/MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 import starIcon from '@/assets/icons/star-icon.svg';
