@@ -1,5 +1,5 @@
 import type { MovieVideo } from '@/types/movie';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import playIcon from '@/assets/icons/play-icon.svg';
 
 interface WatchTrailerProps {

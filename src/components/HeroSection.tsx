@@ -9,7 +9,7 @@ import { Button } from './ui/button';
 import HeroSkeleton from './HeroSkeleton';
 import ErrorInitialState from './ErrorInitialState';
 import { getMovieTrailer } from '@/lib/utils';
-import WatchTrailer from './WatchTrailer';
+import WatchTrailer from './common/WatchTrailer';
 
 interface HeroProps {
   movies: Movie[];

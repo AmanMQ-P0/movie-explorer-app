@@ -5,7 +5,7 @@ import starIcon from '@/assets/icons/star-icon.svg';
 import type { Movie } from '@/types/movie';
 import { useMovieVideos } from '@/hooks/useMovies';
 import { getMovieTrailer } from '@/lib/utils';
-import WatchTrailer from '@/components/WatchTrailer';
+import WatchTrailer from '@/components/common/WatchTrailer';
 import { Button } from '../ui/button';
 
 interface FavoriteMovieItemProps {

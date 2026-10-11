@@ -3,7 +3,7 @@ import { IMAGE_SIZES } from '@/lib/constants';
 import starIcon from '@/assets/icons/star-icon.svg';
 import { Button } from '../ui/button';
 import FavoriteButton from '../FavoriteButton';
-import WatchTrailer from '../WatchTrailer';
+import WatchTrailer from '../common/WatchTrailer';
 import type { Movie } from '@/types/movie';
 import { getMovieTrailer } from '@/lib/utils';
 import { useMovieVideos } from '@/hooks/useMovies';

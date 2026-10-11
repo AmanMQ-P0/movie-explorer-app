@@ -15,7 +15,7 @@ import { getMovieTrailer } from '@/lib/utils';
 import MovieDetailSkeleton from './MovieDetailSkeleton';
 import ErrorInitialState from './ErrorInitialState';
 import FavoriteButton from './FavoriteButton';
-import WatchTrailer from './WatchTrailer';
+import WatchTrailer from './common/WatchTrailer';
 
 interface MovieDetailInfoProps {
   movie?: MovieDetail;
