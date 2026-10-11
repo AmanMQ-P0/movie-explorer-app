@@ -23,9 +23,9 @@ export default function SearchPage() {
   return (
     <main
       id='navbar-scroll-trigger'
-      className='border-2 border-amber-400 max-w-360 mx-auto mt-8xl px-xl xl:px-11xl'
+      className='max-w-360 mx-auto mt-8xl px-xl xl:px-11xl'
     >
-      <div className='border-2 border-blue-600 min-h-150'>
+      <div className='min-h-150'>
         {!query.trim() ? (
           <SearchEmptyState />
         ) : searchResults.isPending ? (
