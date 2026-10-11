@@ -4,6 +4,7 @@ import SearchResults from '@/components/search/SearchResults';
 import SearchNotFound from '@/components/search/SearchNotFound';
 import SearchEmptyState from '@/components/search/SearchEmptyState';
 import SearchLoading from '@/components/search/SearchLoading';
+import SearchError from '@/components/search/SearchError';
 
 // Pencarian film menggunakan useInfiniteQuery dengan maksimal 20 hasil per halaman.
 // Hasil dari halaman berikutnya belum ditampilkan karena desain Figma
@@ -29,7 +30,9 @@ export default function SearchPage() {
           <SearchEmptyState />
         ) : searchResults.isPending ? (
           <SearchLoading />
-        ) : searchResults.isError ? null : movies.length === 0 ? (
+        ) : searchResults.isError ? (
+          <SearchError onRetry={() => searchResults.refetch()} />
+        ) : movies.length === 0 ? (
           <SearchNotFound />
         ) : (
           <SearchResults movies={movies} />
