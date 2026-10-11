@@ -141,7 +141,7 @@ export default function MovieDetailInfo({
               path={movie.poster_path}
               size={IMAGE_SIZES.poster.medium}
               alt={movie.title}
-              className='min-w-25 min-h-40 rounded-xl hidden sm:block'
+              className='min-w-50 lg:min-w-60 min-h-40 rounded-xl hidden sm:block'
             />
 
             <div className='flex flex-col gap-3xl w-full'>
