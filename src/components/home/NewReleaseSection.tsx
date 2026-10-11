@@ -2,7 +2,7 @@ import MovieCard from '@/components/home/MovieCard';
 import type { Movie } from '@/types/movie';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Button } from '@/components/ui/button';
-import NewReleaseSkeleton from '../NewReleaseSkeleton';
+import NewReleaseSkeleton from './NewReleaseSkeleton';
 import ErrorInitialState from '../ErrorInitialState';
 
 interface NewReleaseProps {
