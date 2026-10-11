@@ -1,7 +1,7 @@
 import { IMAGE_SIZES } from '@/lib/constants';
 import type { Movie } from '@/types/movie';
 import starIcon from '@/assets/icons/star-icon.svg';
-import MovieImage from './MovieImage';
+import MovieImage from './common/MovieImage';
 import { Link } from 'react-router-dom';
 
 interface MovieCardProps {

@@ -3,7 +3,7 @@ import type {
   MovieVideo,
   MovieReleaseDatesResult,
 } from '@/types/movie';
-import MovieImage from './MovieImage';
+import MovieImage from './common/MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 import { CalendarDays } from 'lucide-react';
 import starIcon from '@/assets/icons/star-icon.svg';

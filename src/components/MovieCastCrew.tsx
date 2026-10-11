@@ -1,5 +1,5 @@
 import type { MovieCreditsResponse } from '@/types/movie';
-import MovieImage from './MovieImage';
+import MovieImage from './common/MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 import MovieCastCrewSkeleton from './MovieCastCrewSkeleton';
 import ErrorInitialState from './ErrorInitialState';

@@ -1,5 +1,5 @@
 import FavoriteButton from '@/components/FavoriteButton';
-import MovieImage from '../MovieImage';
+import MovieImage from '../common/MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 import starIcon from '@/assets/icons/star-icon.svg';
 import type { Movie } from '@/types/movie';
