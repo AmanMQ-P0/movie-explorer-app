@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useSearchMovies } from '@/hooks/useMovies';
+import SearchResults from '@/components/search/SearchResults';
 
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
@@ -12,18 +13,12 @@ export default function SearchPage() {
     searchResults.data?.pages.flatMap((page) => page.results) ?? [];
 
   return (
-    <main className='border-2 border-amber-400 max-w-360 mx-auto mt-8xl px-xl xl:px-11xl'>
+    <main
+      id='navbar-scroll-trigger'
+      className='border-2 border-amber-400 max-w-360 mx-auto mt-8xl px-xl xl:px-11xl'
+    >
       <div className='border-2 border-blue-600 min-h-100'>
-        <h1 className='text-center'>hasilnya akan tampil disini</h1>
-        <h2 className='text-center'>Total loaded movies: {movies.length}</h2>
-
-        <div className='border-2 border-blue-600 min-h-100'>
-          <ul>
-            {movies.map((movie) => (
-              <li key={movie.id}>{movie.title}</li>
-            ))}
-          </ul>
-        </div>
+        <SearchResults movies={movies} />
       </div>
     </main>
   );
