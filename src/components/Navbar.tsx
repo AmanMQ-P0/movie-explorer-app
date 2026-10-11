@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Logo } from './common/Logo';
 import SearchInput from '@/components/search/SearchInput';
-import MobileSearchHeader from './MobileSearchHeader';
+import MobileSearchHeader from './common/MobileSearchHeader';
 
 export default function Navbar() {
   const location = useLocation();

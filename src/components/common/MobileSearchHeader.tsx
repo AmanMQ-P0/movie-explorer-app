@@ -1,6 +1,6 @@
 import { ArrowLeft, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import SearchInput from '@/components/search/SearchInput';
 
 export default function MobileSearchHeader() {
@@ -12,11 +12,7 @@ export default function MobileSearchHeader() {
 
   return (
     <div className='flex w-full min-w-0 items-center gap-md md:hidden'>
-      <Button
-        type='button'
-        aria-label='Back to home page'
-        onClick={handleBack}
-      >
+      <Button type='button' aria-label='Back to home page' onClick={handleBack}>
         <ArrowLeft aria-hidden='true' />
       </Button>
 
