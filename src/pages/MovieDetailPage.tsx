@@ -6,7 +6,7 @@ import {
   useMovieReleaseDates,
 } from '@/hooks/useMovies';
 import MovieDetailInfo from '@/components/MovieDetailInfo';
-import MovieCastCrew from '@/components/MovieCastCrew';
+import MovieCastCrew from '@/components/movie-detail/MovieCastCrew';
 // import ErrorInitialState from '@/components/ErrorInitialState';
 // import MovieCastCrewSkeleton from '@/components/MovieCastCrewSkeleton';
 
