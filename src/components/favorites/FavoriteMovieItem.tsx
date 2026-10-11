@@ -18,21 +18,25 @@ export default function FavoriteMovieItem({ movie }: FavoriteMovieItemProps) {
 
   return (
     <article className='border-b border-b-neutral-800 py-4xl last:border-b-0 md:flex md:gap-xl'>
-      <MovieImage
-        path={movie.poster_path}
-        size={IMAGE_SIZES.poster.medium}
-        alt={movie.title}
-        className='hidden w-47 h-68 rounded-xl md:block'
-      />
+      <div className='hidden w-47 h-68 bg-neutral-900 rounded-xl shrink-0 md:block'>
+        <MovieImage
+          path={movie.poster_path}
+          size={IMAGE_SIZES.poster.medium}
+          alt={movie.title}
+          className='w-full object-cover rounded-xl'
+        />
+      </div>
 
-      <div className='flex flex-col gap-3xl md:relative'>
+      <div className='w-full flex flex-col gap-3xl md:relative'>
         <div className='flex gap-xl'>
-          <MovieImage
-            path={movie.poster_path}
-            size={IMAGE_SIZES.poster.medium}
-            alt={movie.title}
-            className='w-26 h-39 rounded-md md:hidden'
-          />
+          <div className='bg-neutral-900 w-26 h-39 shrink-0 rounded-md md:hidden'>
+            <MovieImage
+              path={movie.poster_path}
+              size={IMAGE_SIZES.poster.medium}
+              alt={movie.title}
+              className='w-full object-cover rounded-md'
+            />
+          </div>
 
           <div className='flex flex-col gap-xs md:gap-lg'>
             <h2 className='text-md font-bold line-clamp-2 lg:text-display-xs'>
