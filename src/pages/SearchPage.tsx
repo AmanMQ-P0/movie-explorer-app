@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useSearchMovies } from '@/hooks/useMovies';
 import SearchResults from '@/components/search/SearchResults';
 import SearchNotFound from '@/components/search/SearchNotFound';
+import SearchEmptyState from '@/components/search/SearchEmptyState';
 
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
@@ -19,7 +20,9 @@ export default function SearchPage() {
       className='border-2 border-amber-400 max-w-360 mx-auto mt-8xl px-xl xl:px-11xl'
     >
       <div className='border-2 border-blue-600 min-h-150'>
-        {!query.trim() ? null : searchResults.isPending ? null : searchResults.isError ? null : movies.length ===
+        {!query.trim() ? (
+          <SearchEmptyState />
+        ) : searchResults.isPending ? null : searchResults.isError ? null : movies.length ===
           0 ? (
           <SearchNotFound />
         ) : (
