@@ -4,12 +4,12 @@ import type { Movie } from '@/types/movie';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import MovieImage from './common/MovieImage';
-import { Button } from './ui/button';
-import HeroSkeleton from './HeroSkeleton';
-import ErrorInitialState from './ErrorInitialState';
+import MovieImage from '../common/MovieImage';
+import { Button } from '../ui/button';
+import HeroSkeleton from '../HeroSkeleton';
+import ErrorInitialState from '../ErrorInitialState';
 import { getMovieTrailer } from '@/lib/utils';
-import WatchTrailer from './common/WatchTrailer';
+import WatchTrailer from '../common/WatchTrailer';
 
 interface HeroProps {
   movies: Movie[];

@@ -1,5 +1,5 @@
 import { useNowPlayingMovies, usePopularMovies } from '@/hooks/useMovies';
-import HeroSection from '@/components/HeroSection';
+import HeroSection from '@/components/home/HeroSection';
 import TrendingNowSection from '@/components/TrendingNowSection';
 import NewReleaseSection from '@/components/NewReleaseSection';
 
