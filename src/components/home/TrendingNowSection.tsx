@@ -2,9 +2,9 @@ import MovieCard from '@/components/home/MovieCard';
 import type { Movie } from '@/types/movie';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
-import { Button } from './ui/button';
-import TrendingNowSkeleton from './TrendingNowSkeleton';
-import ErrorInitialState from './ErrorInitialState';
+import { Button } from '../ui/button';
+import TrendingNowSkeleton from '../TrendingNowSkeleton';
+import ErrorInitialState from '../ErrorInitialState';
 
 interface TrendingNowProps {
   movies: Movie[];
