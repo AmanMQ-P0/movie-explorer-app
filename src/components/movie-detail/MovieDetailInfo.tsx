@@ -3,7 +3,7 @@ import type {
   MovieVideo,
   MovieReleaseDatesResult,
 } from '@/types/movie';
-import MovieImage from './common/MovieImage';
+import MovieImage from '../common/MovieImage';
 import { IMAGE_SIZES } from '@/lib/constants';
 import { CalendarDays } from 'lucide-react';
 import starIcon from '@/assets/icons/star-icon.svg';
@@ -12,10 +12,10 @@ import emojiHappyIcon from '@/assets/icons/emoji-happy.svg';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { getMovieTrailer } from '@/lib/utils';
-import MovieDetailSkeleton from './MovieDetailSkeleton';
-import ErrorInitialState from './ErrorInitialState';
-import FavoriteButton from './FavoriteButton';
-import WatchTrailer from './common/WatchTrailer';
+import MovieDetailSkeleton from '../MovieDetailSkeleton';
+import ErrorInitialState from '../ErrorInitialState';
+import FavoriteButton from '../FavoriteButton';
+import WatchTrailer from '../common/WatchTrailer';
 
 interface MovieDetailInfoProps {
   movie?: MovieDetail;

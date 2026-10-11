@@ -5,7 +5,7 @@ import {
   useMovieVideos,
   useMovieReleaseDates,
 } from '@/hooks/useMovies';
-import MovieDetailInfo from '@/components/MovieDetailInfo';
+import MovieDetailInfo from '@/components/movie-detail/MovieDetailInfo';
 import MovieCastCrew from '@/components/movie-detail/MovieCastCrew';
 // import ErrorInitialState from '@/components/ErrorInitialState';
 // import MovieCastCrewSkeleton from '@/components/MovieCastCrewSkeleton';
