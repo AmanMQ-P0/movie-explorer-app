@@ -7,6 +7,7 @@ import WatchTrailer from '../WatchTrailer';
 import type { Movie } from '@/types/movie';
 import { getMovieTrailer } from '@/lib/utils';
 import { useMovieVideos } from '@/hooks/useMovies';
+import { Link } from 'react-router-dom';
 
 interface SearchResultItemProps {
   movie: Movie;
@@ -18,29 +19,41 @@ export default function SearchResultItem({ movie }: SearchResultItemProps) {
 
   return (
     <article className='py-4xl md:flex md:gap-xl'>
-      <div className='hidden w-47 h-68 bg-neutral-900 rounded-xl shrink-0 md:block'>
-        <MovieImage
-          path={movie.poster_path}
-          size={IMAGE_SIZES.poster.medium}
-          alt={movie.title}
-          className='w-full object-cover rounded-xl'
-        />
-      </div>
+      <Link
+        to={`/movie/${movie.id}`}
+        aria-label={`View details for ${movie.title}`}
+      >
+        <div className='hidden relative w-47 min-h-68 bg-neutral-900 rounded-xl shrink-0 md:block'>
+          <MovieImage
+            path={movie.poster_path}
+            size={IMAGE_SIZES.poster.medium}
+            alt={movie.title}
+            className='w-full object-cover rounded-xl'
+          />
+          <div className='absolute inset-none hover:bg-base-black/40 transition-colors' />
+        </div>
+      </Link>
 
       <div className='w-full flex flex-col gap-3xl md:relative'>
         <div className='flex gap-xl'>
-          <div className='bg-neutral-900 w-26 h-39 shrink-0 rounded-md md:hidden'>
-            <MovieImage
-              path={movie.poster_path}
-              size={IMAGE_SIZES.poster.medium}
-              alt={movie.title}
-              className='w-full object-cover rounded-md'
-            />
-          </div>
+          <Link
+            to={`/movie/${movie.id}`}
+            aria-label={`View details for ${movie.title}`}
+          >
+            <div className='bg-neutral-900 w-26 h-39 shrink-0 rounded-md relative md:hidden'>
+              <MovieImage
+                path={movie.poster_path}
+                size={IMAGE_SIZES.poster.medium}
+                alt={movie.title}
+                className='w-full object-cover rounded-md'
+              />
+              <div className='absolute inset-none hover:bg-base-black/40 transition-colors' />
+            </div>
+          </Link>
 
           <div className='flex flex-col gap-xs md:gap-lg'>
-            <h2 className='text-md font-bold line-clamp-2 lg:text-display-xs'>
-              {movie.title}
+            <h2 className='text-md font-bold line-clamp-2 hover:text-neutral-400 transition-colors lg:text-display-xs'>
+              <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
             </h2>
             <div className='flex items-center gap-xs'>
               <img src={starIcon} alt='' />
