@@ -3,10 +3,10 @@ import { Search, AlignJustify, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Button } from './ui/button';
-import { Logo } from './common/Logo';
+import { Button } from '../ui/button';
+import { Logo } from './Logo';
 import SearchInput from '@/components/search/SearchInput';
-import MobileSearchHeader from './common/MobileSearchHeader';
+import MobileSearchHeader from './MobileSearchHeader';
 
 export default function Navbar() {
   const location = useLocation();
