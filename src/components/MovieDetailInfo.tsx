@@ -161,7 +161,9 @@ export default function MovieDetailInfo({
                   <div className='flex gap-xs lg:gap-md'>
                     <CalendarDays />
                     <p className='text-sm font-normal text-base-white lg:text-md'>
-                      {movie.release_date}
+                      {movie.release_date
+                        ? `${movie.release_date}`
+                        : 'No Release Date'}
                     </p>
                   </div>
 
