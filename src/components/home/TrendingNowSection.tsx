@@ -4,7 +4,7 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 import { Button } from '../ui/button';
 import TrendingNowSkeleton from './TrendingNowSkeleton';
-import ErrorInitialState from '../ErrorInitialState';
+import ErrorInitialState from '../common/ErrorInitialState';
 
 interface TrendingNowProps {
   movies: Movie[];

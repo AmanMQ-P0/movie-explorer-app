@@ -3,7 +3,7 @@ import type { Movie } from '@/types/movie';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Button } from '@/components/ui/button';
 import NewReleaseSkeleton from './NewReleaseSkeleton';
-import ErrorInitialState from '../ErrorInitialState';
+import ErrorInitialState from '../common/ErrorInitialState';
 
 interface NewReleaseProps {
   movies: Movie[];

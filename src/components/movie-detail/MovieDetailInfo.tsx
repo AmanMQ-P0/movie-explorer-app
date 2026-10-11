@@ -13,7 +13,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { getMovieTrailer } from '@/lib/utils';
 import MovieDetailSkeleton from './MovieDetailSkeleton';
-import ErrorInitialState from '../ErrorInitialState';
+import ErrorInitialState from '../common/ErrorInitialState';
 import FavoriteButton from '../FavoriteButton';
 import WatchTrailer from '../common/WatchTrailer';
 

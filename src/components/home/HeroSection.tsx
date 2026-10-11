@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import MovieImage from '../common/MovieImage';
 import { Button } from '../ui/button';
 import HeroSkeleton from './HeroSkeleton';
-import ErrorInitialState from '../ErrorInitialState';
+import ErrorInitialState from '../common/ErrorInitialState';
 import { getMovieTrailer } from '@/lib/utils';
 import WatchTrailer from '../common/WatchTrailer';
 
