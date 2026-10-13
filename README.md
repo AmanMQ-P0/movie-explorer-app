@@ -1,5 +1,9 @@
 # Challenge 9 - Movie Explorer App
 
+## Live Demo
+
+**Deployed Application:** [Movie Explorer App](https://movie-explorer-app-liart.vercel.app/)
+
 Selamat datang di Challenge 9! Di assignment ini, kalian akan membangun sebuah aplikasi web Movie Explorer menggunakan React, TypeScript, dan berbagai modern tools yang sering digunakan di industri.
 
 ## Deskripsi Project
